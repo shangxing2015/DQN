@@ -31,6 +31,14 @@ print init_state
 
 print init_state[1:] + (tuple([1,2,3]),)
 
-e = np.arange(0.001, 1, 0.01)
+e = np.arange(0.1, 1, 0.1)
 
-print e
+f = e.tolist()
+
+g = range(1, 5, 1)
+
+h = list(itertools.product(f,g))
+
+for i,j in h:
+    print i
+    print j

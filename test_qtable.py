@@ -5,13 +5,12 @@ import numpy as np
 from qtable_learning import QAgent
 from environment_markov_channel import Environment
 
-T_threshold = 500000
+T_threshold = 00000
 PERIOD = 100
 
-all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
-all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
-all_observations_list = tuple(product(all_states_list,
-                                      repeat=AGENT_STATE_WINDOWS_SIZE))
+#all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
+#all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
+#all_observations_list = tuple(product(all_states_list, repeat=AGENT_STATE_WINDOWS_SIZE))
 
 
 
@@ -28,7 +27,6 @@ Example: ( N_CHANNELS = 3, AGENT_STATE_WINDOWS_SIZE = 3, N_SENSING = 2):
   one action may be like (2, 1)
 """
 
-
 def state_transition_function(state, action, observation):
   return state[1:] + (observation, )
 
@@ -37,11 +35,17 @@ def reward_function(state, action, observation):
   return observation[0]
 
 
-def run_test(epsilon):
+def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
+
+
+  #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
+  all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
+  #all_observations_list = tuple(product(all_states_list,repeat=AGENT_STATE_WINDOWS_SIZE))
+
   env = Environment()
 
   init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in
-                      xrange(AGENT_STATE_WINDOWS_SIZE)])
+                      xrange(history)])
   q_agent = QAgent(state_transition_function, init_state, all_actions_list, epsilon)
 
 
@@ -83,14 +87,24 @@ def run_test(epsilon):
 
 epsilon_list = np.arange(0.001, 1, 0.01)
 epsilon_list = epsilon_list.tolist()
+history_list = range(1,6,1)
+parameter_list = list(itertools.product(epsilon_list,history_list))
+
 max_avg_reward = float('-infinity')
 epsilon_max = -1
-for i in epsilon_list:
+history_max = -1
 
-   cur_avg_reward = run_test(i)
+
+for (i,j) in parameter_list:
+
+   cur_avg_reward = run_test(i, j)
+
+   print cur_avg_reward
    if cur_avg_reward >= max_avg_reward:
      max_avg_reward = cur_avg_reward
      epsilon_max = i
+     history_max = j
 
 print max_avg_reward
-print i
+print epsilon_max
+print history_max
