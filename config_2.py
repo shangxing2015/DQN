@@ -29,7 +29,7 @@ N_CHANNELS = 3
 
 
 # q-learning settings
-AGENT_STATE_WINDOWS_SIZE = 5
+AGENT_STATE_WINDOWS_SIZE = 20
 
 
 
@@ -38,8 +38,8 @@ AGENT_STATE_WINDOWS_SIZE = 5
 DEBUG_NO_CONFLICT_GRAPH = True
 
 #transition matrix
-P_MATRIX = [(0.6, 0.4), (0.2, 0.8)]
-GOOD_CHANNEL = True
+P_MATRIX = [(0.6, 0.4), (0.49, 0.51)]
+GOOD_CHANNEL = False
 N_SENSING = 1
 ACTION_SIZE = combination(N_CHANNELS, N_SENSING)
 

@@ -6,27 +6,27 @@ import time
 from collections import deque
 import math
 from config_2 import  *
-from environment_markov_channel import Environment
+from env_markov_distinct_channel import Environment
 import threading
 
 CHANNEL_SIZE = N_CHANNELS
 HISTORY = AGENT_STATE_WINDOWS_SIZE
 STATE_SIZE = CHANNEL_SIZE * HISTORY
 #ACTION_SIZE = ACTION_SIZE
-HIDDEN_UNINITS_1 = 50
-HIDDEN_UNINITS_2 = 50
+HIDDEN_UNINITS_1 = 20
+HIDDEN_UNINITS_2 = 20
 GAMMA = 1
 FRAME_PER_ACTION = 1
 OBSERVE = 500  # timesteps to observe before training
 EXPLORE = 50000# frames over which to anneal epsilon
-FINAL_EPSILON = 0.0  # final value of epsilon: for epsilon annealing
-INITIAL_EPSILON = 1 # starting value of epsilon
+FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
+INITIAL_EPSILON = 0.1 # starting value of epsilon
 #REPLAY_MEMORY = 50000  # number of previous transitions to remember
 ASYNC_UPDATE_INTERVAL = 32  # size of minibatch
-TARGET_UPDATE_INTERVAL = 500 # target netowrk update period
+TARGET_UPDATE_INTERVAL = 1000 # target netowrk update period
 CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
 PERIOD = 10 # for writing to the file
-T_TRESHOLD = 100000 # num of plays; 80000000
+T_TRESHOLD = 500000 # num of plays; 80000000
 
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
 class Async_DQN:
@@ -85,7 +85,7 @@ class Async_DQN:
         self.action_placeholder = tf.placeholder(tf.float32, [None, ACTION_SIZE])
         q_action = tf.reduce_sum(tf.mul(self.q_values, self.action_placeholder), reduction_indices=1)
         self.cost = tf.reduce_mean(tf.square(self.y_placeholder-q_action))
-        self.train_op = tf.train.AdadeltaOptimizer(1e-6).minimize(self.cost)
+        self.train_op = tf.train.AdamOptimizer().minimize(self.cost) #default: Adadelta
 
     def q_learner_thread(self, thread_id, fileName):
 
@@ -232,7 +232,7 @@ class Async_DQN:
         Sample a final epsilon value to anneal towards from a distribution.
         These values are specified in section 5.1 of http://arxiv.org/pdf/1602.01783v1.pdf
         """
-        final_epsilons = np.array([.1, .01, .5])
+        final_epsilons = np.array([.1, .1, .1]) #default: [.1, .01, .5]
         probabilities = np.array([0.4, 0.3, 0.3])
         return np.random.choice(final_epsilons, 1, p=list(probabilities))[0]
 

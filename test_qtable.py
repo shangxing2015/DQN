@@ -5,7 +5,7 @@ import numpy as np
 from qtable_learning import QAgent
 from environment_markov_channel import Environment
 
-T_threshold = 00000
+T_threshold = 500000
 PERIOD = 100
 
 #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
@@ -95,11 +95,13 @@ epsilon_max = -1
 history_max = -1
 
 
+
+
 for (i,j) in parameter_list:
 
    cur_avg_reward = run_test(i, j)
 
-   print cur_avg_reward
+
    if cur_avg_reward >= max_avg_reward:
      max_avg_reward = cur_avg_reward
      epsilon_max = i
@@ -108,3 +110,5 @@ for (i,j) in parameter_list:
 print max_avg_reward
 print epsilon_max
 print history_max
+
+

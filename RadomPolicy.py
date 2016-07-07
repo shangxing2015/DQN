@@ -1,4 +1,4 @@
-from config import *
+from config_2 import *
 import numpy as np
 import random
 

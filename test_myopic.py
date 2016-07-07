@@ -1,9 +1,9 @@
-from environment_markov_channel import Environment
+from env_markov_distinct_channel import Environment
 from MyopicPolicy import MyopicPolicy
 from config_2 import *
 import time
 
-T_THRESHOLD = 50000
+T_THRESHOLD = 500000
 PERIOD = 10
 
 env = Environment()
