@@ -1,4 +1,4 @@
-from env_markov_distinct_channel import Environment
+from environment_markov_channel import Environment
 from MyopicPolicy import MyopicPolicy
 from config_2 import *
 import time
@@ -14,7 +14,7 @@ action = [i for i in range(N_SENSING)]
 
 total = 0
 
-fileName = 'log_bench'
+fileName = 'log_myopic'
 
 f = open(fileName,'w')
 

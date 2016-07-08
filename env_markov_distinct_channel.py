@@ -49,7 +49,8 @@ class Environment:
             terminal: whether the game is over or not (Always False)
         '''
 
-        reward = self.current_state[action[0]] # use the first sensed channel to transmit
+        obs_state = [self.current_state[i] for i in action]
+        reward = sum(obs_state) # sum of all sensed channels
         observation = [-1 for i in range(self.n_channels)]
         terminal = False
 

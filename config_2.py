@@ -40,8 +40,8 @@ DEBUG_NO_CONFLICT_GRAPH = True
 
 #transition matrix
 P_MATRIX = [(0.6, 0.4), (0.4, 0.6)]
-GOOD_CHANNEL = False
-N_SENSING = 1
+GOOD_CHANNEL = True
+N_SENSING = 2
 ACTION_SIZE = combination(N_CHANNELS, N_SENSING)
 
 #def action space

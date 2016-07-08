@@ -52,12 +52,14 @@ class Environment:
 
 
 
-        reward = self.current_state[action[0]] # use the first sensed channel to transmit
+        obs_state = [self.current_state[i] for i in action]
+        reward = sum(obs_state) # sum of all sensed channels
+
         observation = [-1 for i in range(self.n_channels)]
         terminal = False
 
-        print 'current state'
-        print self.current_state
+        #print 'current state'
+        #print self.current_state
 
         #print 'action'
         #print action
