@@ -12,8 +12,7 @@ class Environment:
     def __init__(self):
         self.n_channels = N_CHANNELS
         self.n_nodes = N_NODES
-        self.temp_prob = [(random.random(), random.random()) for i in range (int(self.n_channels))]
-        self.p_matrix = [[(x, 1-x), (y, 1-y)] for x, y in self.temp_prob]
+        self.p_matrix = P_DISTINCT_MATRIX
         self.current_state = [random.randint(0,1) for i in range(self.n_channels)]
         self.next_state = self.current_state
 

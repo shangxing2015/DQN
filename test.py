@@ -1,12 +1,14 @@
 import random
 import numpy as np
 import Queue
+import heapq
 
+import math
 
 import itertools
 
-a = [(random.random(), random.random()) for i in range (3)]
+a = [6, 1, 3, 5, 2]
 
-b = [[(x, 1-x), (y, 1-y)] for x, y in a]
+b = heapq.nlargest(2, a)
 
-print b
+print [a.index(i) for i in b]

@@ -14,6 +14,7 @@ complexity:
 
 import math
 import itertools
+import random
 
 
 def combination(n,k):
@@ -38,11 +39,18 @@ AGENT_STATE_WINDOWS_SIZE = 20
 DEBUG_NO_CONFLICT_GRAPH = True
 
 #transition matrix
-P_MATRIX = [(0.6, 0.4), (0.49, 0.51)]
+P_MATRIX = [(0.6, 0.4), (0.4, 0.6)]
 GOOD_CHANNEL = False
 N_SENSING = 1
 ACTION_SIZE = combination(N_CHANNELS, N_SENSING)
 
 #def action space
-ACTION_LIST =  [i for i in range(N_CHANNELS)]
+ACTION_LIST = [i for i in range(N_CHANNELS)]
 ACTION_SPACE = list(itertools.combinations(ACTION_LIST, N_SENSING))
+
+
+#DISCOUNT / AVERAGE REWARD
+DISCOUNT = False
+temp_prob = [(random.random(), random.random()) for i in range(int(N_CHANNELS))]
+P_DISTINCT_MATRIX = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
+B = [1 for i in range(N_CHANNELS)]

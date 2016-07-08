@@ -49,12 +49,15 @@ class Environment:
             terminal: whether the game is over or not (Always False)
         '''
 
+
+
+
         reward = self.current_state[action[0]] # use the first sensed channel to transmit
         observation = [-1 for i in range(self.n_channels)]
         terminal = False
 
-        #print 'current state'
-        #print self.current_state
+        print 'current state'
+        print self.current_state
 
         #print 'action'
         #print action
