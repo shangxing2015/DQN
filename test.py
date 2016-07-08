@@ -7,10 +7,11 @@ import math
 
 import itertools
 
-a = [6, 1, 3, 5, 2]
+temp_prob = [(random.random(), random.random()) for i in range(int(3))]
+P_DISTINCT_MATRIX = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
 
-b = heapq.nlargest(2, a)
+print P_DISTINCT_MATRIX
 
-print [a.index(i) for i in b]
+a = np.array([8,3,2])
 
-print sum(a)
+print np.max(a)

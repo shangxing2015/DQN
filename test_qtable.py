@@ -4,6 +4,7 @@ import numpy as np
 
 from qtable_learning import QAgent
 from environment_markov_channel import Environment
+import time
 
 T_threshold = 500000
 PERIOD = 100
@@ -50,19 +51,21 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
 
 
   total  = 0
-  count = 0
+
 
   action_evn = [i for i in range(N_SENSING)] #inital action
 
   observation, reward, terminal = env.step(action_evn)
   total += reward
 
-  #fileName = 'log_q_table' + round
-  #f = open(fileName, 'w')
+  fileName = 'log_q_table'
+  f = open(fileName, 'w')
+
+  start_time =time.time()
 
 
-  while count <= T_threshold:
-    count += 1
+  for i in range(T_threshold):
+    count = i+1
     observation = tuple(observation.tolist())
     action = q_agent.observe_and_act(observation, reward, count)
 
@@ -72,43 +75,41 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
     observation, reward, terminal = env.step(action_evn)
     total += reward
 
-    #if (count+1) % PERIOD == 0:
-      #accu_reward = total / float(count+1)
+    if (count) % PERIOD == 0:
+      accum_reward = total / float(count)
 
-      #info_message = str(count+1) + '\t' + str(accu_reward) + '\t' + str(action)
+      duration = time.time() - start_time
+      f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
+      count, accum_reward, str(action), duration))
+      f.write('\n')
+  f.close()
 
-      #f.write(info_message + '\n')
+run_test(0.1, 5)
 
-
-  return total/float(count+1)
-
-
-  #f.close()
-
-epsilon_list = np.arange(0.001, 1, 0.01)
-epsilon_list = epsilon_list.tolist()
-history_list = range(1,6,1)
-parameter_list = list(itertools.product(epsilon_list,history_list))
-
-max_avg_reward = float('-infinity')
-epsilon_max = -1
-history_max = -1
-
-
-
-
-for (i,j) in parameter_list:
-
-   cur_avg_reward = run_test(i, j)
-
-
-   if cur_avg_reward >= max_avg_reward:
-     max_avg_reward = cur_avg_reward
-     epsilon_max = i
-     history_max = j
-
-print max_avg_reward
-print epsilon_max
-print history_max
+# epsilon_list = np.arange(0.001, 1, 0.01)
+# epsilon_list = epsilon_list.tolist()
+# history_list = range(1,6,1)
+# parameter_list = list(itertools.product(epsilon_list,history_list))
+#
+# max_avg_reward = float('-infinity')
+# epsilon_max = -1
+# history_max = -1
+#
+#
+#
+#
+# for (i,j) in parameter_list:
+#
+#    cur_avg_reward = run_test(i, j)
+#
+#
+#    if cur_avg_reward >= max_avg_reward:
+#      max_avg_reward = cur_avg_reward
+#      epsilon_max = i
+#      history_max = j
+#
+# print max_avg_reward
+# print epsilon_max
+# print history_max
 
 

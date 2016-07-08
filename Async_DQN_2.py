@@ -6,7 +6,7 @@ import time
 from collections import deque
 import math
 from config_2 import  *
-from env_markov_distinct_channel import Environment
+from environment_markov_channel import Environment
 import threading
 
 CHANNEL_SIZE = N_CHANNELS
@@ -18,14 +18,14 @@ HIDDEN_UNINITS_2 = 20
 GAMMA = 1
 FRAME_PER_ACTION = 1
 OBSERVE = 500  # timesteps to observe before training
-EXPLORE = 50000# frames over which to anneal epsilon
+EXPLORE = 100000# frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
-INITIAL_EPSILON = 0.1 # starting value of epsilon
+INITIAL_EPSILON = 1 # starting value of epsilon
 #REPLAY_MEMORY = 50000  # number of previous transitions to remember
 ASYNC_UPDATE_INTERVAL = 32  # size of minibatch
 TARGET_UPDATE_INTERVAL = 1000 # target netowrk update period
 CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
-PERIOD = 10 # for writing to the file
+PERIOD = 100 # for writing to the file
 T_TRESHOLD = 500000 # num of plays; 80000000
 
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
@@ -200,7 +200,10 @@ class Async_DQN:
         else:
             action_index = np.argwhere(q_values_temp == np.amax(q_values_temp))
 
-            action_index = action.flatten().tolist()
+            action_index = action_index.flatten().tolist()
+
+            if len(action_index) >= 2:
+                print(action_index)
 
             temp = random.randint(0,len(action_index)-1)
             action_index = action_index[temp]

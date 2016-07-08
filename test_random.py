@@ -1,6 +1,6 @@
 from RadomPolicy import RandomPolciy
 import numpy as np
-from env_markov_distinct_channel import Environment
+from environment_markov_channel import Environment
 from config_2 import *
 import time
 

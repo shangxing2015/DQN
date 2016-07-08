@@ -4,7 +4,7 @@ from config_2 import *
 import time
 
 T_THRESHOLD = 500000
-PERIOD = 10
+PERIOD = 100
 
 env = Environment()
 

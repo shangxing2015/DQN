@@ -34,14 +34,12 @@ AGENT_STATE_WINDOWS_SIZE = 20
 
 
 
-
-
 DEBUG_NO_CONFLICT_GRAPH = True
 
 #transition matrix
-P_MATRIX = [(0.6, 0.4), (0.4, 0.6)]
+P_MATRIX = [(0.6, 0.4), (0.2, 0.8)]
 GOOD_CHANNEL = True
-N_SENSING = 2
+N_SENSING = 1
 ACTION_SIZE = combination(N_CHANNELS, N_SENSING)
 
 #def action space
@@ -51,6 +49,9 @@ ACTION_SPACE = list(itertools.combinations(ACTION_LIST, N_SENSING))
 
 #DISCOUNT / AVERAGE REWARD
 DISCOUNT = False
-temp_prob = [(random.random(), random.random()) for i in range(int(N_CHANNELS))]
-P_DISTINCT_MATRIX = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
+#temp_prob = [(random.random(), random.random()) for i in range(int(N_CHANNELS))]
+#P_DISTINCT_MATRIX = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
+
+P_DISTINCT_MATRIX=[[(0.4102123599894729, 0.5897876400105271), (0.3398750548636893, 0.6601249451363107)], [(0.34121492090001593, 0.6587850790999841), (0.7583916471527934, 0.2416083528472066)], [(0.7393363711238706, 0.26066362887612937), (0.32311980684897756, 0.6768801931510224)]]
+
 B = [1 for i in range(N_CHANNELS)]

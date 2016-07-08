@@ -1,8 +1,8 @@
 from config_2 import *
 import math
 
-P_test = [(0.6, 0.4), (0.49, 0.51)]
-GOOD = True
+P_test = [(0.4, 0.6), (0.55, 0.45)]
+GOOD = False
 P = P_test
 
 #P = P_MATRIX
