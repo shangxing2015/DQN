@@ -6,7 +6,7 @@ import time
 from collections import deque
 import math
 from config_2 import  *
-from env_markov_distinct_channel import Environment
+from environment_markov_channel import Environment
 import threading
 
 CHANNEL_SIZE = N_CHANNELS
@@ -25,7 +25,8 @@ INITIAL_EPSILON = 1 # starting value of epsilon
 ASYNC_UPDATE_INTERVAL = 32  # size of minibatch
 TARGET_UPDATE_INTERVAL = 1000 # target netowrk update period
 CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
-
+PERIOD = 100 # for writing to the file
+#T_THRESHOLD = 500000 # num of plays; 80000000
 
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
 class Async_DQN:
@@ -86,9 +87,9 @@ class Async_DQN:
         self.cost = tf.reduce_mean(tf.square(self.y_placeholder-q_action))
         self.train_op = tf.train.AdamOptimizer().minimize(self.cost) #default: Adadelta
 
-    def q_learner_thread(self, thread_id, fileName, p_matrix, f_result):
+    def q_learner_thread(self, thread_id, fileName):
 
-        env = Environment(p_matrix)
+        env = Environment()
         action = np.zeros(int(ACTION_SIZE))
         action[0]=1
         action_env = self.process(action)
@@ -120,7 +121,7 @@ class Async_DQN:
         start_time = time.time()
         f = open(fileName, 'w')
 
-        while count < T_THRESHOLD:
+        while count <= T_THRESHOLD:
             count += 1
             state_batch.append(currentState)
             action = self.getAction(currentState, epsilon)
@@ -182,12 +183,6 @@ class Async_DQN:
 
         f.close()
 
-
-
-        duration = time.time() - start_time
-        accum_reward = total / float(count)
-        f_result.write('Async Qlearing of thread %d final accu_reward is %f, and time duration is %f\n' % (thread_id, accum_reward, duration))
-
         print("thread %d end" % thread_id)
 
 
@@ -245,10 +240,10 @@ class Async_DQN:
         return np.random.choice(final_epsilons, 1, p=list(probabilities))[0]
 
 
-    def create_thread(self, p_matrix, fileName, f_result):
+    def create_thread(self):
 
         learner_threads = [threading.Thread(target=self.q_learner_thread, args=(
-        thread_id, fileName+str(thread_id), p_matrix, f_result)) for thread_id in range(self.num_learners)]
+        thread_id, 'log_temp_'+str(thread_id))) for thread_id in range(self.num_learners)]
         for t in learner_threads:
             t.start()
 

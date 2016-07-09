@@ -9,10 +9,10 @@ N_CHANNEL channels with identical 2-state Markov Transition Matrix
 
 class Environment:
 
-    def __init__(self):
+    def __init__(self, p_matrix):
         self.n_channels = N_CHANNELS
         self.n_nodes = N_NODES
-        self.p_matrix = P_DISTINCT_MATRIX
+        self.p_matrix = p_matrix
         self.current_state = [random.randint(0,1) for i in range(self.n_channels)]
         self.next_state = self.current_state
 
