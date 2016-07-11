@@ -54,8 +54,6 @@ class MyopicPolicy():
         for i in range(self.n_sensing):
 
 
-
-
             channel_state = observation[obs_queue[i]]
 
             if channel_state == 1:

@@ -4,11 +4,12 @@ from config_2 import *
 import time
 
 def run_whittleIndex(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_whittle'):
+
     gamma = 1
 
     env = Environment(p_matrix)
 
-    brain = WhittleIndex(B, gamma)
+    brain = WhittleIndex(B, gamma, p_matrix)
 
     action = [i for i in range(N_SENSING)]
 

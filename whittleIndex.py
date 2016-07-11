@@ -7,9 +7,9 @@ import heapq
 
 class WhittleIndex:
     
-    def __init__(self, B, gamma):
+    def __init__(self, B, gamma, p_matrix):
         
-        self.p_matrix = [P_MATRIX for i in range(N_CHANNELS)]
+        self.p_matrix = p_matrix
         self.B = B #bandwith of each channels
         self.gamma = gamma #in paper: beta
         self.init_belief = [p[0][1]/(p[0][1]+p[1][0]) for p in self.p_matrix]
@@ -83,6 +83,7 @@ class WhittleIndex:
                 c_1_num = (1-self.gamma*p[1][1]) * (1 - math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i)))
                 c_1_denum_part_1 = (1 - self.gamma*p[1][1])*(1-math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i)+1))
                 c_1_denum_part_2 = (1-self.gamma)*math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i)+1)*self._k_step_belief_update(self._L_pos_func(p[0][1], self.belief[i], i), p[0][1], i)
+
                 c_1 = c_1_num / (c_1_denum_part_1+c_1_denum_part_2)
 
                 c_2_num = math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i))*self._k_step_belief_update(self._L_pos_func(p[0][1], self.belief[i], i), p[0][1], i)
@@ -140,11 +141,11 @@ class WhittleIndex:
                     self.whittle_idx[i] = self.belief[i]*self.B[i]/(1-p[1][1]+self.belief[i])
             else:
 
-                if self.belief[i] <= p[1][1] or self.belief[i] > p[0][1]:
+                if self.belief[i] <= p[1][1] or self.belief[i] >= p[0][1]:
                     self.whittle_idx[i] = self.belief[i]*self.B[i]
                 elif self.belief[i] > p[1][1] and self.belief[i] < self.init_belief[i]:
                     temp_num = self.belief[i] + p[0][1] - self._k_step_belief_update(1, self.belief[i], i)
-                    temp_denum = 1 + p[0][1] - self._k_step_belief_update(1, p[1][1], i) +self._k_step_belief_update(1, self.belief[i], i) - self.belief[i]
+                    temp_denum = 1 + p[0][1] - self._k_step_belief_update(1, p[1][1], i) + self._k_step_belief_update(1, self.belief[i], i) - self.belief[i]
                     self.whittle_idx[i] = temp_num*self.B[i]/temp_denum
                 elif self.belief[i] >= self.init_belief[i] and self.belief[i] < self._k_step_belief_update(1, p[1][1], i):
                     temp_num = p[0][1]
@@ -156,30 +157,34 @@ class WhittleIndex:
 
     def getAction(self, prev_action, observation):
 
-        #print 'observation'
-
-        #print observation
+        # print 'prev_action'
+        #
+        # print prev_action
+        #
+        # print 'observation'
+        #
+        # print observation
 
         self._update_belief(prev_action, observation)
 
-        #print 'belief'
-
-        #print self.belief
+        # print 'belief'
+        #
+        # print self.belief
 
         if DISCOUNT:
             self._whittle_index_discounted()
         else:
             self._whittle_index_average()
 
-        #print 'whittle index'
-
-        #print self.whittle_idx
+        # print 'whittle index'
+        #
+        # print self.whittle_idx
 
         action_temp = heapq.nlargest(N_SENSING, self.whittle_idx)
         action = [self.whittle_idx.index(i) for i in action_temp]
 
-        #print 'action'
-        #print action
+        # print 'action'
+        # print action
 
 
         return action

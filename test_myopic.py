@@ -3,7 +3,7 @@ from env_markov_distinct_channel import Environment
 from config_2 import *
 import time
 
-def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', good_channle=GOOD_CHANNEL):
+def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', good_channel=GOOD_CHANNEL):
 
 
     env = Environment(p_matrix)
@@ -25,10 +25,11 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
         observation, reward, terminal = env.step(action)
         total += reward
 
-        if good_channle:
+        if good_channel:
 
             action = brain.getAction_good(observation)
         else:
+
             action = brain.getAction_bad(observation)
 
         count = i+1
@@ -43,7 +44,6 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
 
     f.close()
 
-    duration = time.time() - start_time
     count = i + 1
     accum_reward = total / float(count)
     duration = time.time() - start_time

@@ -28,6 +28,8 @@ CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
 PERIOD = 100 # for writing to the file
 #T_THRESHOLD = 500000 # num of plays; 80000000
 
+'''original async learning code'''
+
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
 class Async_DQN:
 
