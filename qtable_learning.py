@@ -1,10 +1,11 @@
 from util import Counter
 from random import Random
+from config_2 import *
 
-#OBSERVE = 500  # timesteps to observe before training
-#EXPLORE = 50000# frames over which to anneal epsilon
-#FINAL_EPSILON = 0.1 # final value of epsilon: for epsilon annealing
-#INITIAL_EPSILON = 0.1 # starting value of epsilon
+OBSERVE = 1000 # timesteps to observe before training
+EXPLORE =2000000# frames over which to anneal epsilon #700000
+FINAL_EPSILON = 0.01 # final value of epsilon: for epsilon annealing
+INITIAL_EPSILON = 1 # starting value of epsilon
 
 
 class QAgent:
@@ -22,8 +23,10 @@ class QAgent:
     self.get_next_state = transition_func
 
     # q-learning parameters
-    self.gamma = 1
-    self.epsilon = epsilon
+    self.gamma = 0.99
+    self.epsilon = INITIAL_EPSILON
+
+    self.alpha = 0.1
 
     self.rand = Random()
 
@@ -37,18 +40,27 @@ class QAgent:
       action_id = int(self.rand.uniform(0, len(self.all_actions)))
       self.action = self.all_actions[action_id]
     else:
-      _, self.action = self._get_max_q_value(self.state)
+      log = False
+      if count > T_THRESHOLD - 1000:
+        if count % 100 == 0:
+          print(count)
+          print(self.epsilon)
+          log = True
+      _, self.action = self._get_max_q_value(self.state, log)
 
     #annealling epsilon
     # change episilon
-    #if self.epsilon > FINAL_EPSILON and count > OBSERVE:
-
-      #self.epsilon -= (INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE
+    if self.epsilon > FINAL_EPSILON and count > OBSERVE:
+      self.epsilon -= (INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE
 
     return self.action
 
-  def _get_max_q_value(self, state):
+  def _get_max_q_value(self, state, log):
     tmp_max, tmp_action = 0, self.all_actions[0]
+
+    if log:
+      print self.Q
+
     for action in self.all_actions:
       if self.Q[(state, action)] > tmp_max:
         tmp_max = self.Q[(state, action)]
@@ -56,5 +68,22 @@ class QAgent:
     return tmp_max, tmp_action
 
   def _update_q(self, state, action, next_state, reward):
-    max_q, _ = self._get_max_q_value(next_state)
-    self.Q[(state, action)] = reward + self.gamma * max_q
+    max_q, _ = self._get_max_q_value(next_state, False)
+    self.Q[(state, action)] += self.alpha*(reward + self.gamma * max_q - self.Q[(state, action)])
+
+
+  def target_observe_and_act(self, observation, reward, count):
+
+    next_state = self.get_next_state(self.state, self.action, observation)
+
+    self.state = next_state
+
+    log = False
+
+    # if count< 10:
+    #   log = True
+
+    _, self.action = self._get_max_q_value(self.state, log)
+
+
+    return self.action

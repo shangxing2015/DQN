@@ -7,7 +7,7 @@ import random
 from test_LZ import *
 
 
-finalResult = 'final_result_identical_channel_3_sensing'
+finalResult = 'final_result_identical_channel_1_sensing'
 f_result = open(finalResult, 'w')
 
 for i in range(10):

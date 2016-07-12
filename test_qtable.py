@@ -3,11 +3,9 @@ from itertools import product
 import numpy as np
 
 from qtable_learning import QAgent
-from environment_markov_channel import Environment
+from env_markov_distinct_channel import Environment
 import time
 
-T_threshold = 500000
-PERIOD = 100
 
 #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
 #all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
@@ -43,7 +41,9 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
   #all_observations_list = tuple(product(all_states_list,repeat=AGENT_STATE_WINDOWS_SIZE))
 
-  env = Environment()
+  p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * N_CHANNELS
+
+  env = Environment(p_matrix)
 
   init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in
                       xrange(history)])
@@ -64,10 +64,11 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   start_time =time.time()
 
 
-  for i in range(T_threshold):
+  for i in range(T_THRESHOLD):
     count = i+1
     observation = tuple(observation.tolist())
     action = q_agent.observe_and_act(observation, reward, count)
+
 
     action_evn = list(action)
 
@@ -84,7 +85,47 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
       f.write('\n')
   f.close()
 
-run_test(0.1, 5)
+  #evaluation
+
+
+  total = 0
+
+
+  fileName = 'log_q_table_target'
+  f = open(fileName, 'w')
+
+  start_time = time.time()
+
+  for i in range(5000):
+    count = i + 1
+    observation = tuple(observation.tolist())
+    action = q_agent.target_observe_and_act(observation, reward, count)
+
+    action_evn = list(action)
+
+    if count <= 50:
+
+      print('observation')
+      print(observation)
+
+      print('action')
+      print(action_evn)
+
+    observation, reward, terminal = env.step(action_evn)
+    total += reward
+
+    if (count) % 10 == 0:
+      accum_reward = total / float(count)
+
+      duration = time.time() - start_time
+      f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
+        count, accum_reward, str(action), duration))
+      f.write('\n')
+  f.close()
+
+
+
+run_test(0.1, 1)
 
 # epsilon_list = np.arange(0.001, 1, 0.01)
 # epsilon_list = epsilon_list.tolist()

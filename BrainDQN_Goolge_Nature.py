@@ -13,8 +13,8 @@ STATE_SIZE = CHANNEL_SIZE * HISTORY
 HIDDEN_UNINITS_1 = 20
 HIDDEN_UNINITS_2 = 20
 
-GAMMA = 1
-OBSERVE = 500  # timesteps to observe before training
+GAMMA = 0.99
+OBSERVE = 10000  # timesteps to observe before training
 EXPLORE = 10000  # frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1  # starting value of epsilon

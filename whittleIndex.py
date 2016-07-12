@@ -155,7 +155,7 @@ class WhittleIndex:
                     self.whittle_idx[i] = p[0][1]*self.B[i]/(1+p[0][1]-self.belief[i])
 
 
-    def getAction(self, prev_action, observation):
+    def getAction(self, prev_action, observation, count):
 
         # print 'prev_action'
         #
@@ -178,10 +178,15 @@ class WhittleIndex:
 
         # print 'whittle index'
         #
-        # print self.whittle_idx
+
 
         action_temp = heapq.nlargest(N_SENSING, self.whittle_idx)
         action = [self.whittle_idx.index(i) for i in action_temp]
+
+        if count > 5000-20:
+            print self.whittle_idx
+            print prev_action
+            print observation
 
         # print 'action'
         # print action
