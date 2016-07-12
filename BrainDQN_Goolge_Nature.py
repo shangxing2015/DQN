@@ -4,20 +4,19 @@ import numpy as np
 import random
 from collections import deque
 import math
-from config import  *
+from config_2 import  *
 
 CHANNEL_SIZE = N_CHANNELS
 HISTORY = AGENT_STATE_WINDOWS_SIZE
 STATE_SIZE = CHANNEL_SIZE * HISTORY
 #ACTION_SIZE = ACTION_SIZE
-HIDDEN_UNINITS_1 = 600
-HIDDEN_UNINITS_2 = 600
+HIDDEN_UNINITS_1 = 20
+HIDDEN_UNINITS_2 = 20
 
-GAMMA = 0.99
-FRAME_PER_ACTION = 1
+GAMMA = 1
 OBSERVE = 500  # timesteps to observe before training
-EXPLORE = 50  # frames over which to anneal epsilon
-FINAL_EPSILON = 0.0  # final value of epsilon: for epsilon annealing
+EXPLORE = 10000  # frames over which to anneal epsilon
+FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1  # starting value of epsilon
 REPLAY_MEMORY = 50000  # number of previous transitions to remember
 BATCH_SIZE = 32  # size of minibatch
@@ -34,8 +33,8 @@ class BrainDQN:
         self.state_placeholder_T, self.W_1_T, self.b_1_T, self.W_2_T, self.b_2_T, self.W_3_T, self.b_3_T, self.q_values_T = self.createQNetwork()
         self.createTraining()
         self.updateTargetNetwork = [self.W_1_T.assign(self.W_1), self.b_1_T.assign(self.b_1),
-                                    self.W_2_T.assign(self.W_2_T), self.b_2_T.assign(self.b_2),
-                                    self.W_3_T.assign(self.W_3_T), self.b_3_T.assign(self.b_3)]
+                                    self.W_2_T.assign(self.W_2), self.b_2_T.assign(self.b_2),
+                                    self.W_3_T.assign(self.W_3), self.b_3_T.assign(self.b_3)]
         #start session
         # saving and loading networks
         # self.saver = tf.train.Saver()
@@ -163,6 +162,24 @@ class BrainDQN:
 
     def setInitState(self, observation):
         self.currentState = np.tile(observation, HISTORY)
+
+    def target_get_action(self):
+        current_state_temp = np.reshape(self.currentState, (-1, STATE_SIZE)) # !!! [[]]
+        q_values_temp = self.q_values_T.eval(feed_dict = {self.state_placeholder_T: current_state_temp}) #data structure: [[1,2,3]]
+        action = np.zeros(int(ACTION_SIZE))
+        action_index = 0
+
+
+        action_index = np.argmax(q_values_temp)
+
+        action[action_index] = 1
+
+        # change episilon
+        #if self.epsilon > FINAL_EPSILON and self.timeStep > OBSERVE:
+            #self.epsilon -= (INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE
+
+        return action
+
 
 
 

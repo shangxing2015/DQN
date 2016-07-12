@@ -13,17 +13,12 @@ f_result = open(finalResult, 'w')
 for i in range(1):
 
     # # CASE: same channels
-    temp_prob = [(random.random(), random.random())]
-    p_matrix = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob] * N_CHANNELS
+    #temp_prob = [(random.random(), random.random())]
+    p_matrix = [[(0.6, 0.4), (0.2, 0.8)] ] * N_CHANNELS
 
-    if temp_prob[0][0] >= temp_prob[0][1]:
-        good_channel = True
-    else:
-        good_channel = False
+    good_channel = True
 
-    # CASE: distinct channels
-    # temp_prob = [(random.random(), random.random()) for j in range(int(N_CHANNELS))]
-    # p_matrix = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
+
     f_result.write('test case ' + str(i) + '\n' + '\n')
 
     f_result.write('P Matrix is: \n')
@@ -31,14 +26,6 @@ for i in range(1):
     f_result.write('\n')
     f_result.write('\n')
 
-    lz = list()
-
-    for j in range(N_CHANNELS):
-        p = p_matrix[j]
-        lz.append(lz_complexity_markov(p))
-
-    f_result.write('the LZ complexity of each channel is: %s, and the the average LZ complexity is %f \n' %(str(lz), sum(lz)/float(len(lz))))
-    f_result.write('\n')
 
     file_myopic = 'log_myopic_identical_' + str(i)
     file_whittle = 'log_whittle_identical_target_'+str(i)

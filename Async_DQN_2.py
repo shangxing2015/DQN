@@ -17,8 +17,8 @@ HIDDEN_UNINITS_1 = 20
 HIDDEN_UNINITS_2 = 20
 GAMMA = 1
 FRAME_PER_ACTION = 1
-OBSERVE = 100000  # timesteps to observe before training
-EXPLORE = 100000# frames over which to anneal epsilon
+OBSERVE = 10000  # timesteps to observe before training
+EXPLORE = 10000# frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
 #REPLAY_MEMORY = 50000  # number of previous transitions to remember
@@ -194,7 +194,7 @@ class Async_DQN:
     def getAction(self, currentState, epsilon):
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE)) # !!! [[]]
         q_values_temp = self.q_values.eval(session=self.session, feed_dict = {self.state_placeholder: current_state_temp})[0] #data structure: [[1,2,3]]
-        print(q_values_temp)
+
         action = np.zeros(int(ACTION_SIZE))
 
         action_index = 0
@@ -247,9 +247,14 @@ class Async_DQN:
 
 
     #get action from target network
-    def get_target_action(self, currentState, epsilon):
+    def get_target_action(self, currentState, epsilon, count):
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
         q_values_temp = self.q_values_T.eval(session=self.session, feed_dict={self.state_placeholder_T: current_state_temp})[0]  # data structure: [[1,2,3]]
+
+        if count > 15:
+            print('q_values')
+            print(q_values_temp)
+
         action = np.zeros(int(ACTION_SIZE))
 
         action_index = 0
@@ -297,19 +302,33 @@ class Async_DQN:
         start_time = time.time()
         f = open(fileName, 'w')
 
-        while count < 200000:
+        while count < 50:
             count += 1
 
-            if count<= 300:
+            if count<= 10:
                 action = np.zeros(int(ACTION_SIZE))
                 action_index = random.randrange(ACTION_SIZE)
                 action[int(action_index)] = 1
 
             else:
 
-                action = self.get_target_action(currentState, epsilon)
+                action = self.get_target_action(currentState, epsilon, count)
+
+
+
+
 
             action_env = self.process(action)
+
+
+            if count > 15:
+                print('observation')
+                print(observation)
+
+                print('action')
+                print(action_env)
+
+
 
             observation, reward, terminal = env.step(action_env)
 

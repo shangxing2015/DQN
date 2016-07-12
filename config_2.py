@@ -30,7 +30,7 @@ N_CHANNELS = 2
 
 
 # q-learning settings
-AGENT_STATE_WINDOWS_SIZE = 2
+AGENT_STATE_WINDOWS_SIZE = 1
 
 
 
@@ -58,5 +58,5 @@ B = [1 for i in range(N_CHANNELS)]
 
 
 #for writing to the file
-PERIOD = 100 # for writing to the file
-T_THRESHOLD = 5000# num of plays; 80000000
+PERIOD = 10 # for writing to the file
+T_THRESHOLD = 50000# num of plays; 80000000
