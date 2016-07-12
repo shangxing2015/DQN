@@ -17,7 +17,7 @@ HIDDEN_UNINITS_1 = 20
 HIDDEN_UNINITS_2 = 20
 GAMMA = 1
 FRAME_PER_ACTION = 1
-OBSERVE = 500  # timesteps to observe before training
+OBSERVE = 100000  # timesteps to observe before training
 EXPLORE = 100000# frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
@@ -37,7 +37,7 @@ class Async_DQN:
         self.state_placeholder, self.W_1, self.b_1, self.W_2, self.b_2, self.W_3, self.b_3, self.q_values = self.createQNetwork()
         self.state_placeholder_T, self.W_1_T, self.b_1_T, self.W_2_T, self.b_2_T, self.W_3_T, self.b_3_T, self.q_values_T = self.createQNetwork()
         self.createTraining()
-        self.updateTargetNetwork = [self.W_1_T.assign(self.W_1), self.b_1_T.assign(self.b_1), self.W_2_T.assign(self.W_2_T), self.b_2_T.assign(self.b_2), self.W_3_T.assign(self.W_3_T), self.b_3_T.assign(self.b_3)]
+        self.updateTargetNetwork = [self.W_1_T.assign(self.W_1), self.b_1_T.assign(self.b_1), self.W_2_T.assign(self.W_2), self.b_2_T.assign(self.b_2), self.W_3_T.assign(self.W_3), self.b_3_T.assign(self.b_3)]
         #start session
         # saving and loading networks
         # self.saver = tf.train.Saver()
@@ -194,6 +194,7 @@ class Async_DQN:
     def getAction(self, currentState, epsilon):
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE)) # !!! [[]]
         q_values_temp = self.q_values.eval(session=self.session, feed_dict = {self.state_placeholder: current_state_temp})[0] #data structure: [[1,2,3]]
+        print(q_values_temp)
         action = np.zeros(int(ACTION_SIZE))
 
         action_index = 0
@@ -245,12 +246,117 @@ class Async_DQN:
         return np.random.choice(final_epsilons, 1, p=list(probabilities))[0]
 
 
+    #get action from target network
+    def get_target_action(self, currentState, epsilon):
+        current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
+        q_values_temp = self.q_values_T.eval(session=self.session, feed_dict={self.state_placeholder_T: current_state_temp})[0]  # data structure: [[1,2,3]]
+        action = np.zeros(int(ACTION_SIZE))
+
+        action_index = 0
+
+
+        action_index = np.argwhere(q_values_temp == np.amax(q_values_temp))
+
+        action_index = action_index.flatten().tolist()
+
+        if len(action_index) >= 2:
+            print(action_index)
+
+        temp = random.randint(0, len(action_index) - 1)
+        action_index = action_index[temp]
+
+        action[int(action_index)] = 1
+
+        return action
+
+    #use target network for interacting with the environment
+    def target_network_eval(self, fileName, p_matrix, f_result):
+        env = Environment(p_matrix)
+        action = np.zeros(int(ACTION_SIZE))
+        action[0] = 1
+        action_env = self.process(action)
+
+        observation, reward, terminal = env.step(action_env)
+
+        currentState = self.setInitState(observation)
+
+
+
+
+        count = 0
+        total = 0
+
+        total += reward
+
+        epsilon = INITIAL_EPSILON
+
+
+        print("Start target evaluation" )
+
+
+        start_time = time.time()
+        f = open(fileName, 'w')
+
+        while count < 200000:
+            count += 1
+
+            if count<= 300:
+                action = np.zeros(int(ACTION_SIZE))
+                action_index = random.randrange(ACTION_SIZE)
+                action[int(action_index)] = 1
+
+            else:
+
+                action = self.get_target_action(currentState, epsilon)
+
+            action_env = self.process(action)
+
+            observation, reward, terminal = env.step(action_env)
+
+            total += reward
+
+            nextState = np.concatenate((currentState[CHANNEL_SIZE:], observation))
+
+            currentState = nextState
+
+
+
+            if (count + 1) % PERIOD == 0:
+                duration = time.time() - start_time
+                accum_reward = total / float(count + 1)
+
+                f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
+                    count + 1, accum_reward, str(action_env), duration))
+                f.write('\n')
+
+        f.close()
+
+        duration = time.time() - start_time
+        accum_reward = total / float(count)
+        f_result.write('Async Qlearing using target final accu_reward is %f, and time duration is %f\n' % (accum_reward, duration))
+
+        print("target evaluation ends")
+
     def create_thread(self, p_matrix, fileName, f_result):
 
         learner_threads = [threading.Thread(target=self.q_learner_thread, args=(
         thread_id, fileName+str(thread_id), p_matrix, f_result)) for thread_id in range(self.num_learners)]
         for t in learner_threads:
             t.start()
+
+
+        #make sure all threads are over
+
+        for t in learner_threads:
+            t.join()
+
+
+        self.target_network_eval(fileName+'target', p_matrix, f_result)
+
+
+
+
+
 
 
 

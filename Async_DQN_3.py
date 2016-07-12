@@ -40,7 +40,7 @@ class Async_DQN:
         self.state_placeholder, self.W_1, self.b_1, self.W_2, self.b_2, self.W_3, self.b_3, self.q_values = self.createQNetwork()
         self.state_placeholder_T, self.W_1_T, self.b_1_T, self.W_2_T, self.b_2_T, self.W_3_T, self.b_3_T, self.q_values_T = self.createQNetwork()
         self.createTraining()
-        self.updateTargetNetwork = [self.W_1_T.assign(self.W_1), self.b_1_T.assign(self.b_1), self.W_2_T.assign(self.W_2_T), self.b_2_T.assign(self.b_2), self.W_3_T.assign(self.W_3_T), self.b_3_T.assign(self.b_3)]
+        self.updateTargetNetwork = [self.W_1_T.assign(self.W_1), self.b_1_T.assign(self.b_1), self.W_2_T.assign(self.W_2), self.b_2_T.assign(self.b_2), self.W_3_T.assign(self.W_3), self.b_3_T.assign(self.b_3)]
         #start session
         # saving and loading networks
         # self.saver = tf.train.Saver()

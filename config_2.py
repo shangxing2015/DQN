@@ -26,11 +26,11 @@ def combination(n,k):
 
 N_NODES = 1
 
-N_CHANNELS = 6
+N_CHANNELS = 2
 
 
 # q-learning settings
-AGENT_STATE_WINDOWS_SIZE = 20
+AGENT_STATE_WINDOWS_SIZE = 2
 
 
 
@@ -39,7 +39,7 @@ DEBUG_NO_CONFLICT_GRAPH = True
 #transition matrix
 P_MATRIX = [(0.6, 0.4), (0.2, 0.8)]
 GOOD_CHANNEL = True
-N_SENSING = 3
+N_SENSING = 1
 ACTION_SIZE = combination(N_CHANNELS, N_SENSING)
 
 #def action space
@@ -59,4 +59,4 @@ B = [1 for i in range(N_CHANNELS)]
 
 #for writing to the file
 PERIOD = 100 # for writing to the file
-T_THRESHOLD = 500000# num of plays; 80000000
+T_THRESHOLD = 5000# num of plays; 80000000
