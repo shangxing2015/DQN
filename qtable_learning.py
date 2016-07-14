@@ -3,10 +3,10 @@ from random import Random
 from config_2 import *
 
 OBSERVE = 1000 # timesteps to observe before training
-EXPLORE =2000000# frames over which to anneal epsilon #700000
+EXPLORE = 1000000# frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.01 # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
-
+INITIAL_ALPHA = 0.1
 
 class QAgent:
 
@@ -26,7 +26,7 @@ class QAgent:
     self.gamma = 0.99
     self.epsilon = INITIAL_EPSILON
 
-    self.alpha = 0.1
+    self.alpha = INITIAL_ALPHA
 
     self.rand = Random()
 
@@ -52,6 +52,11 @@ class QAgent:
     # change episilon
     if self.epsilon > FINAL_EPSILON and count > OBSERVE:
       self.epsilon -= (INITIAL_EPSILON - FINAL_EPSILON) / EXPLORE
+
+
+    #annealing alpha
+    if count > EXPLORE+10:
+      self.alpha = 1/float(count-EXPLORE)
 
     return self.action
 

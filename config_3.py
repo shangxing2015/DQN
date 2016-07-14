@@ -59,4 +59,4 @@ B = [1 for i in range(N_CHANNELS)]
 
 #for writing to the file
 PERIOD = 1000 # for writing to the file
-T_THRESHOLD = 5000000# num of plays; 80000000
+T_THRESHOLD = 2000000# num of plays; 80000000

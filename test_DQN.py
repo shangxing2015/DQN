@@ -28,7 +28,7 @@ env = Environment(p_matrix)
 
 brain = BrainDQN()
 
-fileName = 'log_temp'
+fileName = 'log_DQN_temp'
 
 action = np.zeros(int(ACTION_SIZE))
 action[0] = 1
@@ -75,35 +75,18 @@ f.close()
 
 #final evaluation
 
-env = Environment(p_matrix)
-action = np.zeros(int(ACTION_SIZE))
-action[0] = 1
-action_env = process(action)
-observation, reward, terminal = env.step(action_env)
-
-
-brain.setInitState(observation)
 
 total = 0
 
 index = 0
 
 while index <= 50:
-
     index = index+1
-
-    if index<= 10:
-        action = np.zeros(int(ACTION_SIZE))
-        action_index = random.randrange(ACTION_SIZE)
-        action[int(action_index)] = 1
-
-    else:
-
-        action = brain.target_get_action()
+    action = brain.target_get_action()
 
     action_env = process(action)
 
-    if index > 15:
+    if index >= 0:
         print('observation')
         print(observation)
 

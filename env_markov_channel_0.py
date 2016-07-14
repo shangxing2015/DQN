@@ -51,7 +51,7 @@ class Environment:
 
         obs_state = [self.current_state[i] for i in action]
         reward = sum(obs_state) # sum of all sensed channels
-        observation = [-1 for i in range(self.n_channels)]
+        observation = [0 for i in range(self.n_channels)]
         terminal = False
 
         #print 'current state'
@@ -72,7 +72,7 @@ class Environment:
 
                 observation[channel_id] = 1
             else:
-                observation[channel_id] = 0
+                observation[channel_id] = -1
 
         #print 'observation'
         #print observation

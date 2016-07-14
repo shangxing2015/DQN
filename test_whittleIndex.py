@@ -26,7 +26,7 @@ def run_whittleIndex(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_whi
         observation, reward, terminal = env.step(action)
         total += reward
 
-        action = brain.getAction(action, observation)
+        action = brain.getAction(action, observation, 0)
 
         count = i+1
 

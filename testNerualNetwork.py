@@ -5,7 +5,7 @@ import random
 import time
 from collections import deque
 import math
-from config_2 import  *
+from config_4 import  *
 from env_markov_distinct_channel import Environment
 import threading
 
@@ -13,17 +13,17 @@ CHANNEL_SIZE = N_CHANNELS
 HISTORY = AGENT_STATE_WINDOWS_SIZE
 STATE_SIZE = CHANNEL_SIZE * HISTORY
 #ACTION_SIZE = ACTION_SIZE
-HIDDEN_UNINITS_1 = 20
-HIDDEN_UNINITS_2 = 20
-GAMMA = 0.99
+HIDDEN_UNINITS_1 = 5
+HIDDEN_UNINITS_2 = 5
+GAMMA = 1
 FRAME_PER_ACTION = 1
 OBSERVE = 10000  # timesteps to observe before training
-EXPLORE = 1000000# frames over which to anneal epsilon
+EXPLORE = 700000# frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
-INITIAL_EPSILON = 1 # starting value of epsilon
+INITIAL_EPSILON = 0.1 # starting value of epsilon
 #REPLAY_MEMORY = 50000  # number of previous transitions to remember
 ASYNC_UPDATE_INTERVAL = 32  # size of minibatch
-TARGET_UPDATE_INTERVAL = 10000 # target netowrk update period
+TARGET_UPDATE_INTERVAL = 200000 # target netowrk update period
 CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
 
 
@@ -106,6 +106,8 @@ class Async_DQN:
         count = 0
         total = 0
 
+        reward = 0
+
 
         total += reward
 
@@ -128,6 +130,8 @@ class Async_DQN:
             action_env = self.process(action)
 
             observation, reward, terminal = env.step(action_env)
+
+            reward = 50
 
             total += reward
 
@@ -251,7 +255,7 @@ class Async_DQN:
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
         q_values_temp = self.q_values_T.eval(session=self.session, feed_dict={self.state_placeholder_T: current_state_temp})[0]  # data structure: [[1,2,3]]
 
-        if count > 15:
+        if count > 1:
             print('q_values')
             print(q_values_temp)
 
@@ -282,6 +286,8 @@ class Async_DQN:
         action_env = self.process(action)
 
         observation, reward, terminal = env.step(action_env)
+
+        reward = 50
 
         currentState = self.setInitState(observation)
 
@@ -332,11 +338,16 @@ class Async_DQN:
 
             observation, reward, terminal = env.step(action_env)
 
+            reward = 50
+
             total += reward
 
             nextState = np.concatenate((currentState[CHANNEL_SIZE:], observation))
 
             currentState = nextState
+
+            print('currentState')
+            print(currentState)
 
 
 

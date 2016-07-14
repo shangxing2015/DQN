@@ -10,17 +10,17 @@ CHANNEL_SIZE = N_CHANNELS
 HISTORY = AGENT_STATE_WINDOWS_SIZE
 STATE_SIZE = CHANNEL_SIZE * HISTORY
 #ACTION_SIZE = ACTION_SIZE
-HIDDEN_UNINITS_1 = 20
-HIDDEN_UNINITS_2 = 20
+HIDDEN_UNINITS_1 = 50
+HIDDEN_UNINITS_2 = 50
 
 GAMMA = 0.99
-OBSERVE = 10000  # timesteps to observe before training
-EXPLORE = 10000  # frames over which to anneal epsilon
+OBSERVE = 50000  # timesteps to observe before training
+EXPLORE = 500000  # frames over which to anneal epsilon
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1  # starting value of epsilon
-REPLAY_MEMORY = 50000  # number of previous transitions to remember
+REPLAY_MEMORY = 100000  # number of previous transitions to remember
 BATCH_SIZE = 32  # size of minibatch
-UPDATE_PERIOD = 1000 # target netowrk update period
+UPDATE_PERIOD = 50 # target netowrk update period
 
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
 class BrainDQN:
@@ -107,8 +107,15 @@ class BrainDQN:
             if terminal:
                 y_batch.append(reward_batch[i])
             else:
+
                 temp = np.amax(q_value_batch[i])
+                print(temp)
+
                 y_batch.append(reward_batch[i]+GAMMA*temp)
+
+                print(reward_batch[i]+GAMMA*temp)
+
+
 
         #step 3: train
         self.train_op.run(feed_dict = {self.state_placeholder: state_batch, self.action_placeholder: action_batch, self.y_placeholder: y_batch})
@@ -169,6 +176,8 @@ class BrainDQN:
         action = np.zeros(int(ACTION_SIZE))
         action_index = 0
 
+        print('q values')
+        print(q_values_temp)
 
         action_index = np.argmax(q_values_temp)
 
