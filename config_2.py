@@ -26,7 +26,7 @@ def combination(n,k):
 
 N_NODES = 1
 
-N_CHANNELS = 2
+N_CHANNELS = 3
 
 
 # q-learning settings

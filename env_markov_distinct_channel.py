@@ -1,10 +1,11 @@
 import numpy as np
 import random
 
-from config_3 import *
+from config_2 import *
 
 '''
 N_CHANNEL channels with identical 2-state Markov Transition Matrix
+observation by default is -1. And good: 1; bad: 0.
 '''
 
 class Environment:

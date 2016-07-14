@@ -5,6 +5,7 @@ from config_3 import *
 
 '''
 N_CHANNEL channels with identical 2-state Markov Transition Matrix
+observation by default is 0. And good: 1; bad: -1.
 '''
 
 class Environment:

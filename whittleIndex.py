@@ -183,10 +183,10 @@ class WhittleIndex:
         action_temp = heapq.nlargest(N_SENSING, self.whittle_idx)
         action = [self.whittle_idx.index(i) for i in action_temp]
 
-        if count > 5000-20:
-            print self.whittle_idx
-            print prev_action
-            print observation
+        # if count > 5000-20:
+        #     print self.whittle_idx
+        #     print prev_action
+        #     print observation
 
         # print 'action'
         # print action
