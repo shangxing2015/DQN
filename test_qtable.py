@@ -26,28 +26,26 @@ Example: ( N_CHANNELS = 3, AGENT_STATE_WINDOWS_SIZE = 3, N_SENSING = 2):
   one action may be like (2, 1)
 """
 
+#define the state transition of q learning
 def state_transition_function(state, action, observation):
   return state[1:] + (observation, )
 
-
+#reward function
 def reward_function(state, action, observation):
   return observation[0]
 
+#main test: training + evaluation
+def run_test(f_result, p_matrix=P_MATRIX, fileName = 'log_q_table', history = AGENT_STATE_WINDOWS_SIZE):
 
-def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
 
 
-  #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
   all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
-  #all_observations_list = tuple(product(all_states_list,repeat=AGENT_STATE_WINDOWS_SIZE))
-
-  p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * N_CHANNELS
 
   env = Environment(p_matrix)
 
   init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in
                       xrange(history)])
-  q_agent = QAgent(state_transition_function, init_state, all_actions_list, epsilon)
+  q_agent = QAgent(state_transition_function, init_state, all_actions_list)
 
 
   total  = 0
@@ -58,12 +56,12 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   observation, reward, terminal = env.step(action_evn)
   total += reward
 
-  fileName = 'log_q_table'
+  fileName = fileName
   f = open(fileName, 'w')
 
   start_time =time.time()
 
-
+  #training
   for i in range(T_THRESHOLD):
     count = i+1
     observation = tuple(observation.tolist())
@@ -86,12 +84,10 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   f.close()
 
   #evaluation
-
-
   total = 0
 
 
-  fileName = 'log_q_table_target'
+  fileName = fileName + '_target'
   f = open(fileName, 'w')
 
   start_time = time.time()
@@ -103,18 +99,18 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
 
     action_evn = list(action)
 
-    if count <= 50:
-
-      print('observation')
-      print(observation)
-
-      print('action')
-      print(action_evn)
+    # if count <= 50:
+    #
+    #   print('observation')
+    #   print(observation)
+    #
+    #   print('action')
+    #   print(action_evn)
 
     observation, reward, terminal = env.step(action_evn)
     total += reward
 
-    if (count) % 10 == 0:
+    if (count) % PERIOD== 0:
       accum_reward = total / float(count)
 
       duration = time.time() - start_time
@@ -124,33 +120,11 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   f.close()
 
 
+  count = i + 1
+  accum_reward = total / float(count)
+  duration = time.time() - start_time
+  f_result.write('Q table final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))
 
-run_test(0.1, 1)
 
-# epsilon_list = np.arange(0.001, 1, 0.01)
-# epsilon_list = epsilon_list.tolist()
-# history_list = range(1,6,1)
-# parameter_list = list(itertools.product(epsilon_list,history_list))
-#
-# max_avg_reward = float('-infinity')
-# epsilon_max = -1
-# history_max = -1
-#
-#
-#
-#
-# for (i,j) in parameter_list:
-#
-#    cur_avg_reward = run_test(i, j)
-#
-#
-#    if cur_avg_reward >= max_avg_reward:
-#      max_avg_reward = cur_avg_reward
-#      epsilon_max = i
-#      history_max = j
-#
-# print max_avg_reward
-# print epsilon_max
-# print history_max
 
 

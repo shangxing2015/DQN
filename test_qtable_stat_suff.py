@@ -49,9 +49,9 @@ def state_transition_function(state, action, observation, p_matrix):
                 s0 = p[1][0] / (p[0][1] + p[1][0])
 
                 if random.random() <= s0:
-                    item=(0,0)
+                    item=(0,item[1]-3)
                 else:
-                    item=(1,0)
+                    item=(1,item[1]-3)
 
 
         temp.append(item)
@@ -81,14 +81,14 @@ def set_init_state(p_matrix):
 
 
 
-def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
+def run_test(f_result, p_matrix, fileName = 'log_q_table_suff', history = AGENT_STATE_WINDOWS_SIZE):
 
 
   #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
   all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
   #all_observations_list = tuple(product(all_states_list,repeat=AGENT_STATE_WINDOWS_SIZE))
 
-  p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * N_CHANNELS
+  #p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * N_CHANNELS
 
   env = Environment(p_matrix)
 
@@ -105,7 +105,7 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   observation, reward, terminal = env.step(action_evn)
   total += reward
 
-  fileName = 'log_q_table'
+  fileName = fileName
   f = open(fileName, 'w')
 
   start_time =time.time()
@@ -138,7 +138,7 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   total = 0
 
 
-  fileName = 'log_q_table_target'
+  fileName = fileName + '_target'
   f = open(fileName, 'w')
 
   start_time = time.time()
@@ -150,13 +150,13 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
 
     action_evn = list(action)
 
-    if count <= 50:
-
-      print('observation')
-      print(observation)
-
-      print('action')
-      print(action_evn)
+    # if count <= 50:
+    #
+    #   print('observation')
+    #   print(observation)
+    #
+    #   print('action')
+    #   print(action_evn)
 
     observation, reward, terminal = env.step(action_evn)
     total += reward
@@ -170,34 +170,11 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
       f.write('\n')
   f.close()
 
+  duration = time.time() - start_time
+  count = i + 1
+  accum_reward = total / float(count)
+  duration = time.time() - start_time
+  f_result.write('Q table_suff final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))
 
-
-run_test(0.1, 1)
-
-# epsilon_list = np.arange(0.001, 1, 0.01)
-# epsilon_list = epsilon_list.tolist()
-# history_list = range(1,6,1)
-# parameter_list = list(itertools.product(epsilon_list,history_list))
-#
-# max_avg_reward = float('-infinity')
-# epsilon_max = -1
-# history_max = -1
-#
-#
-#
-#
-# for (i,j) in parameter_list:
-#
-#    cur_avg_reward = run_test(i, j)
-#
-#
-#    if cur_avg_reward >= max_avg_reward:
-#      max_avg_reward = cur_avg_reward
-#      epsilon_max = i
-#      history_max = j
-#
-# print max_avg_reward
-# print epsilon_max
-# print history_max
 
 

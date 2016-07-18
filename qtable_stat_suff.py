@@ -10,7 +10,7 @@ INITIAL_ALPHA = 0.1
 
 class QAgent:
 
-  def __init__(self, transition_func,  init_state, all_actions, epsilon):
+  def __init__(self, transition_func,  init_state, all_actions):
     self.Q = Counter()
 
     self.all_actions = all_actions

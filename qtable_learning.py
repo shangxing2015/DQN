@@ -3,14 +3,14 @@ from random import Random
 from config_2 import *
 
 OBSERVE = 20000 # timesteps to observe before training
-EXPLORE = 60000# frames over which to anneal epsilon #700000
+EXPLORE = 100000# frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1 # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
 INITIAL_ALPHA = 0.1
 
 class QAgent:
 
-  def __init__(self, transition_func,  init_state, all_actions, epsilon):
+  def __init__(self, transition_func,  init_state, all_actions):
     self.Q = Counter()
 
     self.all_actions = all_actions
@@ -23,7 +23,7 @@ class QAgent:
     self.get_next_state = transition_func
 
     # q-learning parameters
-    self.gamma = 0.001
+    self.gamma = 0.99
     self.epsilon = INITIAL_EPSILON
 
     self.alpha = INITIAL_ALPHA
@@ -40,6 +40,8 @@ class QAgent:
       action_id = int(self.rand.uniform(0, len(self.all_actions)))
       self.action = self.all_actions[action_id]
     else:
+
+      #print some info
       log = False
       if count > T_THRESHOLD - 1000:
         if count % 100 == 0:
@@ -55,14 +57,15 @@ class QAgent:
 
 
     #annealing alpha
-    if count > EXPLORE+10:
-      self.alpha = 1/float(count-EXPLORE)
+    if count > EXPLORE*4+10:
+      self.alpha = 1/float(count-EXPLORE*4)
 
     return self.action
 
   def _get_max_q_value(self, state, log):
     tmp_max, tmp_action = 0, self.all_actions[0]
 
+    #print info
     if log:
       print self.Q
 
@@ -73,6 +76,7 @@ class QAgent:
 
     action_list = []
 
+    #'multiple largest q values' case
     for action in self.all_actions:
       if self.Q[(state, action)] == tmp_max:
         action_list.append(action)
