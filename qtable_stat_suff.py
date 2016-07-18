@@ -2,8 +2,8 @@ from util import Counter
 from random import Random
 from config_2 import *
 
-OBSERVE = 20000 # timesteps to observe before training
-EXPLORE = 60000# frames over which to anneal epsilon #700000
+OBSERVE = 40000 # timesteps to observe before training
+EXPLORE = 4000000# frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1 # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
 INITIAL_ALPHA = 0.1
@@ -23,16 +23,16 @@ class QAgent:
     self.get_next_state = transition_func
 
     # q-learning parameters
-    self.gamma = 0.001
+    self.gamma = 0.99
     self.epsilon = INITIAL_EPSILON
 
     self.alpha = INITIAL_ALPHA
 
     self.rand = Random()
 
-  def observe_and_act(self, observation, reward, count):
+  def observe_and_act(self, observation, reward, count, p_matrix):
 
-    next_state = self.get_next_state(self.state, self.action, observation)
+    next_state = self.get_next_state(self.state, self.action, observation, p_matrix)
     self._update_q(self.state, self.action, next_state, reward)
     self.state = next_state
 
@@ -77,11 +77,13 @@ class QAgent:
       if self.Q[(state, action)] == tmp_max:
         action_list.append(action)
 
-    idx = random.randint(0, len(action_list)-1)
+    idx = random.randint(0, len(action_list) - 1)
     tmp_action = action_list[idx]
 
     if len(action_list) > 1:
       print action_list
+
+
 
     return tmp_max, tmp_action
 
@@ -90,9 +92,9 @@ class QAgent:
     self.Q[(state, action)] += self.alpha*(reward + self.gamma * max_q - self.Q[(state, action)])
 
 
-  def target_observe_and_act(self, observation, reward, count):
+  def target_observe_and_act(self, observation, reward, count, p_matrix):
 
-    next_state = self.get_next_state(self.state, self.action, observation)
+    next_state = self.get_next_state(self.state, self.action, observation, p_matrix)
 
     self.state = next_state
 

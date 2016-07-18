@@ -20,7 +20,7 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
 
     start_time = time.time()
 
-    for i in range(T_THRESHOLD):
+    for i in range(T_EVAL):
 
         observation, reward, terminal = env.step(action)
         total += reward

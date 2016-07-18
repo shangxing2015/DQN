@@ -9,6 +9,8 @@ def run_whittleIndex(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_whi
 
     env = Environment(p_matrix)
 
+    print p_matrix
+
     brain = WhittleIndex(B, gamma, p_matrix)
 
     action = [i for i in range(N_SENSING)]
@@ -21,7 +23,7 @@ def run_whittleIndex(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_whi
 
     start_time = time.time()
 
-    for i in range(T_THRESHOLD):
+    for i in range(T_EVAL):
 
         observation, reward, terminal = env.step(action)
         total += reward

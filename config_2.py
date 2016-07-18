@@ -26,7 +26,7 @@ def combination(n,k):
 
 N_NODES = 1
 
-N_CHANNELS = 3
+N_CHANNELS = 2
 
 
 # q-learning settings
@@ -59,4 +59,5 @@ B = [1 for i in range(N_CHANNELS)]
 
 #for writing to the file
 PERIOD = 1000 # for writing to the file
-T_THRESHOLD = 5000000# num of plays; 80000000
+T_THRESHOLD = 10000000#5000000# num of plays; 80000000
+T_EVAL = 50000

@@ -1,13 +1,7 @@
-total = 1
+import random
 
-for i in range(2000):
+a = {'[-1, 1]': [2], '[1, -1]': [3]}
 
-    if i % 16 == 0:
+a['[-1, 1]'].append(3)
 
-        total  = 1+ total*0.99
-    else:
-        total = total*0.99
-
-
-
-print total
+print random.randint(5)

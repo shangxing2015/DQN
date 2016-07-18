@@ -1,10 +1,12 @@
+
 from config_2 import *
 from itertools import product
 import numpy as np
 
-from qtable_learning import QAgent
+from qtable_stat_suff import QAgent
 from env_markov_distinct_channel import Environment
 import time
+import random
 
 
 #all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
@@ -26,12 +28,57 @@ Example: ( N_CHANNELS = 3, AGENT_STATE_WINDOWS_SIZE = 3, N_SENSING = 2):
   one action may be like (2, 1)
 """
 
-def state_transition_function(state, action, observation):
-  return state[1:] + (observation, )
+def state_transition_function(state, action, observation, p_matrix):
+
+    #state=((x1,y1), (x2,y2), ...)
+
+    temp = list()
+
+    for index in range(len(observation)):
+        if observation[index] == 0:
+            item = (0,0)
+        elif observation[index] == 1:
+            item=(1,0)
+        else:
+            item=(state[index][0], state[index][1]+1)
+            # to do: use mixing time for threshold
+
+            if item[1] > 3:
+
+                p = p_matrix[index]
+                s0 = p[1][0] / (p[0][1] + p[1][0])
+
+                if random.random() <= s0:
+                    item=(0,0)
+                else:
+                    item=(1,0)
 
 
-def reward_function(state, action, observation):
-  return observation[0]
+        temp.append(item)
+
+
+    return tuple(temp)
+
+
+def set_init_state(p_matrix):
+    state = list()
+
+    for p in p_matrix:
+        s0 = p[1][0]/(p[0][1]+p[1][0])
+
+        if random.random() <= s0:
+            state.append((0, 0))
+        else:
+            state.append((1,0))
+
+    return tuple(state)
+
+
+
+
+
+
+
 
 
 def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
@@ -45,8 +92,8 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
 
   env = Environment(p_matrix)
 
-  init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in
-                      xrange(history)])
+  init_state = set_init_state(p_matrix)
+
   q_agent = QAgent(state_transition_function, init_state, all_actions_list, epsilon)
 
 
@@ -67,7 +114,7 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   for i in range(T_THRESHOLD):
     count = i+1
     observation = tuple(observation.tolist())
-    action = q_agent.observe_and_act(observation, reward, count)
+    action = q_agent.observe_and_act(observation, reward, count, p_matrix)
 
 
     action_evn = list(action)
@@ -99,7 +146,7 @@ def run_test(epsilon, history = AGENT_STATE_WINDOWS_SIZE):
   for i in range(T_EVAL):
     count = i + 1
     observation = tuple(observation.tolist())
-    action = q_agent.target_observe_and_act(observation, reward, count)
+    action = q_agent.target_observe_and_act(observation, reward, count, p_matrix)
 
     action_evn = list(action)
 

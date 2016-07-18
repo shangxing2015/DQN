@@ -15,7 +15,7 @@ STATE_SIZE = CHANNEL_SIZE * HISTORY
 #ACTION_SIZE = ACTION_SIZE
 HIDDEN_UNINITS_1 = 20
 HIDDEN_UNINITS_2 = 20
-GAMMA = 0.99
+GAMMA = 0.001
 FRAME_PER_ACTION = 1
 OBSERVE = 10000  # timesteps to observe before training
 EXPLORE = 1000000# frames over which to anneal epsilon
@@ -24,7 +24,7 @@ INITIAL_EPSILON = 1 # starting value of epsilon
 #REPLAY_MEMORY = 50000  # number of previous transitions to remember
 ASYNC_UPDATE_INTERVAL = 32  # size of minibatch
 TARGET_UPDATE_INTERVAL = 10000 # target netowrk update period
-CONCURRENT_THREADS_NUM = 4 # No. of concurrent learners
+CONCURRENT_THREADS_NUM = 1 # No. of concurrent learners
 
 
 """DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
@@ -106,6 +106,7 @@ class Async_DQN:
         count = 0
         total = 0
 
+        q_dict={}
 
         total += reward
 
@@ -123,7 +124,7 @@ class Async_DQN:
         while count < T_THRESHOLD:
             count += 1
             state_batch.append(currentState)
-            action = self.getAction(currentState, epsilon)
+            action = self.getAction(currentState, epsilon, q_dict, count, f_result)
             action_batch.append(action)
             action_env = self.process(action)
 
@@ -190,16 +191,34 @@ class Async_DQN:
 
         print("thread %d end" % thread_id)
 
+        #deal with q_dict
 
-    def getAction(self, currentState, epsilon):
+
+    def getAction(self, currentState, epsilon, q_dict, count, f_result):
 
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE)) # !!! [[]]
         q_values_temp = self.q_values.eval(session=self.session, feed_dict = {self.state_placeholder: current_state_temp})[0] #data structure: [[1,2,3]]
 
-        print(current_state_temp)
+
+        if count % PERIOD == 0:
+
+            temp_list = [[0, -1], [1, -1], [-1, 0], [-1, 1]]
+
+            for obs in temp_list:
+
+                obs_np = np.array(obs)
+
+                current_temp = np.reshape(obs_np, (-1, STATE_SIZE))
+
+                #print(current_temp[0])
+
+                q_temp = self.q_values.eval(session=self.session, feed_dict = {self.state_placeholder: current_temp})[0] #data structure: [[1,2,3]]
 
 
-        print(q_values_temp)
+            f_result.write(str(q_temp))
+            f_result.write('\n')
+
+
 
         action = np.zeros(int(ACTION_SIZE))
 
@@ -362,16 +381,18 @@ class Async_DQN:
 
     def create_thread(self, p_matrix, fileName, f_result):
 
-        learner_threads = [threading.Thread(target=self.q_learner_thread, args=(
-        thread_id, fileName+str(thread_id), p_matrix, f_result)) for thread_id in range(self.num_learners)]
-        for t in learner_threads:
-            t.start()
+        self.q_learner_thread( 1, fileName, p_matrix, f_result)
 
-
-        #make sure all threads are over
-
-        for t in learner_threads:
-            t.join()
+        # learner_threads = [threading.Thread(target=self.q_learner_thread, args=(
+        # thread_id, fileName+str(thread_id), p_matrix, f_result)) for thread_id in range(self.num_learners)]
+        # for t in learner_threads:
+        #     t.start()
+        #
+        #
+        # #make sure all threads are over
+        #
+        # for t in learner_threads:
+        #     t.join()
 
 
         self.target_network_eval(fileName+'target', p_matrix, f_result)
