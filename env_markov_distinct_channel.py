@@ -1,7 +1,7 @@
 import numpy as np
 import random
 
-from config_2 import *
+from config_4 import *
 
 '''
 N_CHANNEL channels with identical 2-state Markov Transition Matrix

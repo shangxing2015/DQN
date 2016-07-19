@@ -1,7 +1,9 @@
 import random
 
-a = {'[-1, 1]': [2], '[1, -1]': [3]}
+import numpy as np
 
-a['[-1, 1]'].append(3)
+a = np.array([1, 2, 3])
 
-print random.randint(5)
+b = [1 ,2, 3]
+
+print type(b).__module__ == 'numpy'
