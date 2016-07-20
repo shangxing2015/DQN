@@ -1,11 +1,11 @@
-from MyopicPolicy import MyopicPolicy
-from env_markov_distinct_channel import Environment
-from config_2 import *
 import time
 
-def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', good_channel=GOOD_CHANNEL):
+from MyopicPolicy import MyopicPolicy
+from config_2 import *
+from env_markov_distinct_channel import Environment
 
 
+def run_myopic(f_result, p_matrix=P_DISTINCT_MATRIX, fileName='log_myopic', good_channel=GOOD_CHANNEL):
     env = Environment(p_matrix)
 
     brain = MyopicPolicy()
@@ -16,7 +16,7 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
 
     fileName = fileName
 
-    f = open(fileName,'w')
+    f = open(fileName, 'w')
 
     start_time = time.time()
 
@@ -32,15 +32,14 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
 
             action = brain.getAction_bad(observation)
 
-        count = i+1
+        count = i + 1
 
         if count % PERIOD == 0:
             accum_reward = total / float(count)
             duration = time.time() - start_time
-            f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (count, accum_reward, str(action), duration))
+            f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
+            count, accum_reward, str(action), duration))
             f.write('\n')
-
-
 
     f.close()
 
@@ -48,6 +47,3 @@ def run_myopic(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_myopic', 
     accum_reward = total / float(count)
     duration = time.time() - start_time
     f_result.write('Myopic final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))
-
-
-

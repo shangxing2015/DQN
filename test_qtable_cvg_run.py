@@ -1,13 +1,9 @@
-from test_whittleIndex import *
 from test_qtable_cvg import *
-
-
 
 finalResult = 'final_result_whittle_and_qtable_cvg_2_channel'
 f_result = open(finalResult, 'w')
 
 for i in range(1):
-
     # # CASE: same channels
 
     #
@@ -32,13 +28,8 @@ for i in range(1):
     f_result.write('\n')
     f_result.write('\n')
 
-
-
-
-
-    #file_whittle = 'log_whittle_cvg_2_jul_19'+str(i)
+    # file_whittle = 'log_whittle_cvg_2_jul_19'+str(i)
     file_qtable = 'log_q_table_cvg_2_jul_19' + str(i)
-
 
     # run_whittleIndex(f_result, p_matrix, file_whittle)
     # f_result.write('\n')

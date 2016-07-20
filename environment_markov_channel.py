@@ -1,5 +1,6 @@
-import numpy as np
 import random
+
+import numpy as np
 
 from config_2 import *
 
@@ -7,19 +8,16 @@ from config_2 import *
 N_CHANNEL channels with identical 2-state Markov Transition Matrix
 '''
 
-class Environment:
 
+class Environment:
     def __init__(self):
         self.n_channels = N_CHANNELS
         self.n_nodes = N_NODES
         self.p_matrix = P_MATRIX
-        self.current_state = [random.randint(0,1) for i in range(self.n_channels)]
+        self.current_state = [random.randint(0, 1) for i in range(self.n_channels)]
         self.next_state = self.current_state
 
-
     def _state_transit(self):
-
-
 
         for i in range(self.n_channels):
 
@@ -38,7 +36,6 @@ class Environment:
 
         self.current_state = self.next_state
 
-
     def step(self, action):
         '''
         :param
@@ -49,28 +46,25 @@ class Environment:
             terminal: whether the game is over or not (Always False)
         '''
 
-
-
-
         obs_state = [self.current_state[i] for i in action]
-        reward = sum(obs_state) # sum of all sensed channels
+        reward = sum(obs_state)  # sum of all sensed channels
 
         observation = [-1 for i in range(self.n_channels)]
         terminal = False
 
-        #print 'current state'
-        #print self.current_state
+        # print 'current state'
+        # print self.current_state
 
-        #print 'action'
-        #print action
+        # print 'action'
+        # print action
 
 
         for i in action:
 
             channel_id = i
 
-            #print 'observe state'
-            #print self.current_state[channel_id]
+            # print 'observe state'
+            # print self.current_state[channel_id]
 
             if self.current_state[channel_id] == 1:
 
@@ -78,17 +72,11 @@ class Environment:
             else:
                 observation[channel_id] = 0
 
-        #print 'observation'
-        #print observation
+        # print 'observation'
+        # print observation
 
         observation = np.array(observation)
 
         self._state_transit()
 
         return observation, reward, terminal
-
-
-
-
-
-

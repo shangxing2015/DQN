@@ -1,23 +1,25 @@
-from RadomPolicy import RandomPolciy
-import numpy as np
-from env_markov_distinct_channel import Environment
-from config_2 import *
 import time
 
-#def preprocess(observation)
+import numpy as np
 
-#change one-hot action vector to action action in the environment
+from RadomPolicy import RandomPolciy
+from config_2 import *
+from env_markov_distinct_channel import Environment
+
+
+# def preprocess(observation)
+
+# change one-hot action vector to action action in the environment
 def _process(action):
-
     action_id = np.nonzero(action)[0]
 
     action_evn = list(ACTION_SPACE[int(action_id)])
 
     return action_evn
 
-def run_random(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_random'):
 
-    #step 1: init BrainDQN
+def run_random(f_result, p_matrix=P_DISTINCT_MATRIX, fileName='log_random'):
+    # step 1: init BrainDQN
     env = Environment(p_matrix)
     brain = RandomPolciy()
 
@@ -33,31 +35,26 @@ def run_random(f_result, p_matrix = P_DISTINCT_MATRIX, fileName = 'log_random'):
     total = 0
     total += reward
 
-
-
     start_time = time.time()
-
-
 
     f = open(fileName, 'w')
     for i in range(T_THRESHOLD):
 
-        count = i+1
+        count = i + 1
 
         action = brain.getAction()
         action_env = _process(action)
 
         observation, reward, terminal = env.step(action_env)
 
-
         total += reward
-        duration = time.time()-start_time
+        duration = time.time() - start_time
 
         if count % PERIOD == 0:
             accum_reward = total / float(count)
             duration = time.time() - start_time
             f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
-            count, accum_reward, str(action_env), duration))
+                count, accum_reward, str(action_env), duration))
             f.write('\n')
 
     f.close()

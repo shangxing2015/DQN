@@ -6,8 +6,8 @@ at each timeslot:
     observe N_SENSING channels, and choose 1 channel (at the top of the queue) to transmit
 '''
 
-class MyopicPolicy():
 
+class MyopicPolicy():
     def __init__(self):
         self.n_channels = N_CHANNELS
         self.n_nodes = N_NODES
@@ -15,11 +15,9 @@ class MyopicPolicy():
         self.queue = [i for i in range(self.n_channels)]
         self.n_sensing = N_SENSING
 
-
-    def getAction_good(self, observation): # p11 >= p01
+    def getAction_good(self, observation):  # p11 >= p01
 
         zero_indices = []
-
 
         for i in range(self.n_sensing):
 
@@ -31,13 +29,9 @@ class MyopicPolicy():
 
         self.queue = [self.queue[i] for i in range(len(self.queue)) if i not in zero_indices]
 
+        return self.queue[0:self.n_sensing]  # which channel to sensing, and the first is the transmit channel
 
-
-        return self.queue[0:self.n_sensing] #which channel to sensing, and the first is the transmit channel
-
-
-
-    def getAction_bad(self, observation): # p11 < p01
+    def getAction_bad(self, observation):  # p11 < p01
 
 
 
@@ -48,16 +42,11 @@ class MyopicPolicy():
 
         one_indices = []
 
-
-
-
         for i in range(self.n_sensing):
-
 
             channel_state = observation[obs_queue[i]]
 
             if channel_state == 1:
-
                 one_indices.append(i)
 
                 unobs_queue.append(obs_queue[i])
@@ -67,13 +56,3 @@ class MyopicPolicy():
         self.queue = obs_queue + unobs_queue
 
         return self.queue[0:self.n_sensing]
-
-
-
-
-
-
-
-
-
-

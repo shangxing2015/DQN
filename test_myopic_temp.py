@@ -1,11 +1,5 @@
-from config_2 import *
-from test_random import *
-from test_whittleIndex import *
 from test_async_learner import *
 from test_myopic import run_myopic
-import random
-from test_LZ import *
-
 
 finalResult = 'final_result_identical_channel_3_inverse_sensing'
 f_result = open(finalResult, 'w')
@@ -33,9 +27,7 @@ for i in range(1):
 
     lz = list()
 
-
-
-    file_myopic = 'log_myopic_identical_jul_17'+str(i)
+    file_myopic = 'log_myopic_identical_jul_17' + str(i)
 
     run_myopic(f_result, p_matrix, file_myopic, good_channel)
     f_result.write('\n')

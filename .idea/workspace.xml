@@ -2,17 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39efb868-95bf-4814-a809-3f844da507d1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/final_result_whittle_and_qtable_cvg_2_channel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log_q_table_cvg_2_jul_190" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/DQN.iml" afterPath="$PROJECT_DIR$/.idea/DQN.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/A3C.py" afterPath="$PROJECT_DIR$/A3C.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/A3C_sample.py" afterPath="$PROJECT_DIR$/A3C_sample.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Async_DQN_2.py" afterPath="$PROJECT_DIR$/Async_DQN_2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Async_DQN_org.py" afterPath="$PROJECT_DIR$/Async_DQN_org.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BrainDQN.py" afterPath="$PROJECT_DIR$/BrainDQN.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BrainDQN_Goolge_Nature.py" afterPath="$PROJECT_DIR$/BrainDQN_Goolge_Nature.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyopicPolicy.py" afterPath="$PROJECT_DIR$/MyopicPolicy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RadomPolicy.py" afterPath="$PROJECT_DIR$/RadomPolicy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/async_3.py" afterPath="$PROJECT_DIR$/async_3.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calStat.py" afterPath="$PROJECT_DIR$/calStat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config_2.py" afterPath="$PROJECT_DIR$/config_2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config_3.py" afterPath="$PROJECT_DIR$/config_3.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config_4.py" afterPath="$PROJECT_DIR$/config_4.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env_markov_channel_0.py" afterPath="$PROJECT_DIR$/env_markov_channel_0.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env_markov_distinct_channel.py" afterPath="$PROJECT_DIR$/env_markov_distinct_channel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env_markov_sufficient.py" afterPath="$PROJECT_DIR$/env_markov_sufficient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/environment_markov_channel.py" afterPath="$PROJECT_DIR$/environment_markov_channel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_result.py" afterPath="$PROJECT_DIR$/plot_result.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qtable_exp.py" afterPath="$PROJECT_DIR$/qtable_exp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qtable_learning.py" afterPath="$PROJECT_DIR$/qtable_learning.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qtable_learning_cvg.py" afterPath="$PROJECT_DIR$/qtable_learning_cvg.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qtable_stat_suff.py" afterPath="$PROJECT_DIR$/qtable_stat_suff.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/read_plot_qValues.py" afterPath="$PROJECT_DIR$/read_plot_qValues.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_DQN.py" afterPath="$PROJECT_DIR$/test_DQN.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_LZ.py" afterPath="$PROJECT_DIR$/test_LZ.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_asyncQ_qvalue.py" afterPath="$PROJECT_DIR$/test_asyncQ_qvalue.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_asyncQ_temp.py" afterPath="$PROJECT_DIR$/test_asyncQ_temp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_async_learner.py" afterPath="$PROJECT_DIR$/test_async_learner.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_mixing_time.py" afterPath="$PROJECT_DIR$/test_mixing_time.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_myopic.py" afterPath="$PROJECT_DIR$/test_myopic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_myopic_temp.py" afterPath="$PROJECT_DIR$/test_myopic_temp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_plot_3_sensing.py" afterPath="$PROJECT_DIR$/test_plot_3_sensing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_qtable.py" afterPath="$PROJECT_DIR$/test_qtable.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_qtable_cvg.py" afterPath="$PROJECT_DIR$/test_qtable_cvg.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_qtable_cvg_run.py" afterPath="$PROJECT_DIR$/test_qtable_cvg_run.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_qtable_stat_suff.py" afterPath="$PROJECT_DIR$/test_qtable_stat_suff.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_qtable_suff_run.py" afterPath="$PROJECT_DIR$/test_qtable_suff_run.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_random.py" afterPath="$PROJECT_DIR$/test_random.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_three_policies.py" afterPath="$PROJECT_DIR$/test_three_policies.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_three_policy_identical.py" afterPath="$PROJECT_DIR$/test_three_policy_identical.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_whittleIndex.py" afterPath="$PROJECT_DIR$/test_whittleIndex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_whittle_and_Qtable.py" afterPath="$PROJECT_DIR$/test_whittle_and_Qtable.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_whittle_temp.py" afterPath="$PROJECT_DIR$/test_whittle_temp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/twc_thm4.py" afterPath="$PROJECT_DIR$/twc_thm4.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.py" afterPath="$PROJECT_DIR$/util.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/whittleIndex.py" afterPath="$PROJECT_DIR$/whittleIndex.py" />
     </list>
     <ignored path="DQN.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +74,10 @@
         <entry file="file://$PROJECT_DIR$/test_qtable_cvg_run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="166">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-              <folding />
+              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+              <folding>
+                <marker date="1469053972962" expanded="false" signature="0:29" ph="import ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,9 +86,9 @@
         <entry file="file://$PROJECT_DIR$/test_qtable_suff_run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="31">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <marker date="1469053973066" expanded="true" signature="0:35" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -59,20 +98,28 @@
         <entry file="file://$PROJECT_DIR$/config_4.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
-              <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+              <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qtable_learning_cvg.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qtable_learning_cvg.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qtable_learning_cvg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="A3C.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/A3C.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +128,7 @@
         <entry file="file://$PROJECT_DIR$/test_qtable_cvg.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,10 +138,8 @@
         <entry file="file://$PROJECT_DIR$/qtable_stat_suff.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="88" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+              <caret line="88" column="35" selection-start-line="4" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,10 +148,8 @@
         <entry file="file://$PROJECT_DIR$/qtable_exp.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+              <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,20 +157,8 @@
       <file leaf-file-name="test_mixing_time.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_mixing_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="env_markov_distinct_channel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/env_markov_distinct_channel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -139,9 +170,9 @@
         <entry file="file://$PROJECT_DIR$/test_qtable_stat_suff.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1667">
-              <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+              <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
               <folding>
-                <element signature="e#1#23#0" expanded="true" />
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -177,7 +208,6 @@
         <option value="$PROJECT_DIR$/environment.py" />
         <option value="$PROJECT_DIR$/wsn_game_bench.py" />
         <option value="$PROJECT_DIR$/Async_DQN.py" />
-        <option value="$PROJECT_DIR$/A3C.py" />
         <option value="$PROJECT_DIR$/test_whittleIndex.py" />
         <option value="$PROJECT_DIR$/environment_markov_channel.py" />
         <option value="$PROJECT_DIR$/whittleIndex.py" />
@@ -197,6 +227,7 @@
         <option value="$PROJECT_DIR$/test_qtable_suff_run.py" />
         <option value="$PROJECT_DIR$/test_qtable_cvg.py" />
         <option value="$PROJECT_DIR$/qtable_learning_cvg.py" />
+        <option value="$PROJECT_DIR$/A3C.py" />
       </list>
     </option>
   </component>
@@ -540,9 +571,10 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13755459" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16523606" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3390558" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3390558" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -553,7 +585,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16523606" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -609,21 +640,11 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/env_markov_distinct_channel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -645,9 +666,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -791,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/A3C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/environment_markov_channel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -887,9 +899,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
           <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -898,16 +908,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_mixing_time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -925,9 +933,9 @@
     <entry file="file://$PROJECT_DIR$/test_qtable_stat_suff.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1667">
-          <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+          <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
           <folding>
-            <element signature="e#1#23#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,29 +943,25 @@
     <entry file="file://$PROJECT_DIR$/qtable_stat_suff.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="88" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+          <caret line="88" column="35" selection-start-line="4" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/qtable_exp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_qtable_suff_run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1469053973066" expanded="true" signature="0:35" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -965,15 +969,17 @@
     <entry file="file://$PROJECT_DIR$/test_qtable_cvg_run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding />
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <marker date="1469053972962" expanded="false" signature="0:29" ph="import ..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config_4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
-          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -981,18 +987,32 @@
     <entry file="file://$PROJECT_DIR$/test_qtable_cvg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/qtable_learning_cvg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/A3C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
