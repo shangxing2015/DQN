@@ -43,8 +43,10 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName = 'log_q_table', history = AG
 
   env = Environment(p_matrix)
 
-  init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in
-                      xrange(history)])
+  #init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in xrange(history)])
+
+
+  init_state = tuple([tuple([0,-1])])
   q_agent = QAgent(state_transition_function, init_state, all_actions_list)
 
 
@@ -90,6 +92,9 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName = 'log_q_table', history = AG
       count, accum_reward, str(action), duration))
       f.write('\n')
   f.close()
+
+  print('count_cvg is %d' % count_cvg)
+  print(prev_value_dict)
 
   #evaluation
   total = 0

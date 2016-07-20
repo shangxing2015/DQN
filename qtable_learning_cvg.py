@@ -2,8 +2,8 @@ from util import Counter
 from random import Random
 from config_4 import *
 
-OBSERVE = 2000 # timesteps to observe before training
-EXPLORE = 40000# frames over which to anneal epsilon #700000
+OBSERVE = 200 # timesteps to observe before training
+EXPLORE = 6000# frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1 # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
 INITIAL_ALPHA = 0.1
@@ -102,11 +102,13 @@ class QAgent:
           if i[0] not in Q_state_list:
               Q_state_list.append(i[0])
 
-      temp_max = 0
-      temp_action = self.all_actions[0]
-
       Q_value_dict = {}
+
       for q_state in Q_state_list:
+
+          temp_max = 0
+          temp_action = self.all_actions[0]
+
           for action in self.all_actions:
               if self.Q[(q_state, action)] > temp_max:
                   temp_max = self.Q[(q_state, action)]
