@@ -6,7 +6,7 @@ OBSERVE = 200 # timesteps to observe before training
 EXPLORE = 6000# frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1 # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1 # starting value of epsilon
-INITIAL_ALPHA = 0.1
+INITIAL_ALPHA = 1
 
 class QAgent:
 

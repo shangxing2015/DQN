@@ -72,10 +72,10 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName = 'log_q_table', history = AG
     observation = tuple(observation.tolist())
     action, prev_value_dict, count_cvg = q_agent.observe_and_act(observation, reward, count, prev_value_dict, count_cvg)
 
-    if count_cvg == T_CVG:
-        print 'policy converged, and round of training %d' % i
-
-        break
+    # if count_cvg == T_CVG:
+    #     print 'policy converged, and round of training %d' % i
+    #
+    #     break
 
 
     action_evn = list(action)

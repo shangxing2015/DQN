@@ -1,9 +1,9 @@
 from test_whittleIndex import *
-from test_qtable_cvg import *
+from test_qtable_stat_suff import *
 
 
 
-finalResult = 'final_result_whittle_and_qtable_cvg_2_channel'
+finalResult = 'final_result_qtable_suff_cvg'
 f_result = open(finalResult, 'w')
 
 for i in range(1):
@@ -37,7 +37,7 @@ for i in range(1):
 
 
     #file_whittle = 'log_whittle_cvg_2_jul_19'+str(i)
-    file_qtable = 'log_q_table_cvg_2_jul_19' + str(i)
+    file_qtable = 'log_q_table_suff_cvg_jul_20' + str(i)
 
 
     # run_whittleIndex(f_result, p_matrix, file_whittle)

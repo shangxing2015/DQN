@@ -1,7 +1,0 @@
-test case 0
-
-P Matrix is: 
-[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
-
-Q table final accu_reward is 0.749800 and time duration is 0.160605
-

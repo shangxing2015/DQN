@@ -1,5 +1,5 @@
 
-from config_2 import *
+from config_4 import *
 from itertools import product
 import numpy as np
 
@@ -36,14 +36,14 @@ def state_transition_function(state, action, observation, p_matrix):
 
     for index in range(len(observation)):
         if observation[index] == 0:
-            item = (0,0)
+            item = (0,1)
         elif observation[index] == 1:
-            item=(1,0)
+            item=(1,1)
         else:
             item=(state[index][0], state[index][1]+1)
             # to do: use mixing time for threshold
 
-            if item[1] > 3:
+            if item[1] > 4:
 
                 p = p_matrix[index]
                 s0 = p[1][0] / (p[0][1] + p[1][0])
@@ -67,17 +67,11 @@ def set_init_state(p_matrix):
         s0 = p[1][0]/(p[0][1]+p[1][0])
 
         if random.random() <= s0:
-            state.append((0, 0))
+            state.append((0, 1))
         else:
-            state.append((1,0))
+            state.append((1,1))
 
     return tuple(state)
-
-
-
-
-
-
 
 
 
@@ -94,10 +88,12 @@ def run_test(f_result, p_matrix, fileName = 'log_q_table_suff', history = AGENT_
 
   init_state = set_init_state(p_matrix)
 
-  q_agent = QAgent(state_transition_function, init_state, all_actions_list, epsilon)
+  q_agent = QAgent(state_transition_function, init_state, all_actions_list)
 
 
   total  = 0
+
+
 
 
   action_evn = [i for i in range(N_SENSING)] #inital action
@@ -110,11 +106,19 @@ def run_test(f_result, p_matrix, fileName = 'log_q_table_suff', history = AGENT_
 
   start_time =time.time()
 
+  prev_value_dict = {}
+  count_cvg = 0
+
 
   for i in range(T_THRESHOLD):
     count = i+1
     observation = tuple(observation.tolist())
-    action = q_agent.observe_and_act(observation, reward, count, p_matrix)
+    action, prev_value_dict, count_cvg = q_agent.observe_and_act(observation, reward, count, p_matrix, prev_value_dict, count_cvg)
+
+    if count_cvg == T_CVG:
+        print 'policy converged, and round of training %d' % i
+
+        break
 
 
     action_evn = list(action)
@@ -131,6 +135,10 @@ def run_test(f_result, p_matrix, fileName = 'log_q_table_suff', history = AGENT_
       count, accum_reward, str(action), duration))
       f.write('\n')
   f.close()
+
+  print('count_cvg is %d' % count_cvg)
+  print(len(prev_value_dict))
+  print(prev_value_dict)
 
   #evaluation
 
