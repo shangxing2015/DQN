@@ -54,6 +54,6 @@ B = [1 for i in range(N_CHANNELS)]
 
 # for writing to the file
 PERIOD = 100  # for writing to the file
-T_THRESHOLD = 800000  # 5000000# num of plays; 80000000
-T_EVAL = 5000
+T_THRESHOLD = 3000000  # 5000000# num of plays; 80000000
+T_EVAL = 50000
 T_CVG = 15000

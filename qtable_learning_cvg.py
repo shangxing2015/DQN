@@ -4,10 +4,10 @@ from config_4 import *
 from util import Counter
 
 OBSERVE = 200  # timesteps to observe before training
-EXPLORE = 6000  # frames over which to anneal epsilon #700000
+EXPLORE = 60000  # frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1  # starting value of epsilon
-INITIAL_ALPHA = 1
+INITIAL_ALPHA = 0.3
 
 
 class QAgent:
@@ -54,6 +54,7 @@ class QAgent:
         if count % 1 == 0:
           print(count)
           print(self.epsilon)
+          print(self.R)
           log = True
       _, self.action = self._get_max_q_value(self.state, log)
 
@@ -135,12 +136,14 @@ class QAgent:
 
   def _update_q(self, state, action, next_state, reward):
     max_q, _ = self._get_max_q_value(next_state, False)
-    self.count[(state, action)] += 1
-    if self.count[(state, action)] == 1:
+
+    if self.count[(state, action)] == 0:
       self.R[(state, action)] = reward
     else:
       self.R[(state, action)] = (self.count[(state, action)] * self.R[(state, action)] + reward) \
           / float(self.count[(state, action)] + 1)
+    self.count[(state, action)] += 1
+
     reward_mean = self.R[(state, action)]
     self.Q[(state, action)] += self.alpha * \
         (reward_mean + self.gamma * max_q - self.Q[(state, action)])
