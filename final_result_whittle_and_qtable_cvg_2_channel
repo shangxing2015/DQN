@@ -1,0 +1,90 @@
+test case 0
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 149
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.758200 and time duration is 0.088063
+
+test case 1
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 1794
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.744200 and time duration is 0.052519
+
+test case 2
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 548
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.749400 and time duration is 0.052260
+
+test case 3
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 1886
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.751800 and time duration is 0.052433
+
+test case 4
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 1087
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.757000 and time duration is 0.053792
+
+test case 5
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 188
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.763000 and time duration is 0.104110
+
+test case 6
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 1528
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.752600 and time duration is 0.052176
+
+test case 7
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 2147
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.752400 and time duration is 0.052918
+
+test case 8
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 57
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.743200 and time duration is 0.053204
+
+test case 9
+
+P Matrix is: 
+[[(0.6, 0.4), (0.2, 0.8)], [(0.6, 0.4), (0.2, 0.8)]]
+
+count_cvg is 125
+{((-1, 1),): (1,), ((-1, 0),): (0,), ((0, -1),): (1,), ((1, -1),): (0,)}
+Q table final accu_reward is 0.758800 and time duration is 0.054475
+

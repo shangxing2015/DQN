@@ -6,6 +6,7 @@ from qtable_stat_suff import QAgent
 from env_markov_distinct_channel import Environment
 import time
 import random
+from test_mixing_time import *
 
 # all_states_list = tuple(product(range(-1, 2), repeat=N_CHANNELS))
 # all_actions_list = tuple(product(range(0, N_CHANNELS), repeat=N_SENSING))
@@ -32,6 +33,7 @@ def state_transition_function(state, action, observation, p_matrix):
 
     temp = list()
 
+
     for index in range(len(observation)):
         if observation[index] == 0:
             item = (0, 1)
@@ -39,17 +41,20 @@ def state_transition_function(state, action, observation, p_matrix):
             item = (1, 1)
         else:
             item = (state[index][0], state[index][1] + 1)
+
+            p = p_matrix[index]
+
+            mix_time = cal_mix_time(p)
             # to do: use mixing time for threshold
 
-            if item[1] > 4:
+            if item[1] > mix_time:
 
-                p = p_matrix[index]
                 s0 = p[1][0] / (p[0][1] + p[1][0])
 
                 if random.random() <= s0:
-                    item = (0, item[1] - 3)
+                    item = (0, item[1] - mix_time)
                 else:
-                    item = (1, item[1] - 3)
+                    item = (1, item[1] - mix_time)
 
         temp.append(item)
 
@@ -123,9 +128,10 @@ def run_test(f_result, p_matrix, fileName='log_q_table_suff', history=AGENT_STAT
             f.write('\n')
     f.close()
 
-    print('count_cvg is %d' % count_cvg)
-    print(len(prev_value_dict))
-    print(prev_value_dict)
+    f_result.write('count_cvg is %d' % count_cvg)
+    f_result.write('\n')
+    f_result.write(str(prev_value_dict))
+    f_result.write('\n')
 
     # evaluation
 
@@ -139,7 +145,13 @@ def run_test(f_result, p_matrix, fileName='log_q_table_suff', history=AGENT_STAT
 
     for i in range(T_EVAL):
         count = i + 1
-        observation = tuple(observation.tolist())
+
+        if type(observation).__module__ == 'numpy':
+            observation = tuple(observation.tolist())
+
+        else:
+            print 'train finished earlier'
+
         action = q_agent.target_observe_and_act(observation, reward, count, p_matrix)
 
         action_evn = list(action)

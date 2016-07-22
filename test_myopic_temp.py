@@ -1,7 +1,7 @@
 from test_async_learner import *
 from test_myopic import run_myopic
 
-finalResult = 'final_result_identical_channel_3_inverse_sensing'
+finalResult = 'final_result_identical_channel_2_inverse_sensing'
 f_result = open(finalResult, 'w')
 
 for i in range(1):
@@ -9,7 +9,9 @@ for i in range(1):
     # # CASE: same channels
 
 
-    p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * N_CHANNELS
+    p_matrix = [[(0.9, 0.1), (0.1, 0.9)]] * N_CHANNELS
+
+    print p_matrix
 
     if p_matrix[0][0][1] >= p_matrix[0][1][1]:
         good_channel = False
@@ -27,7 +29,7 @@ for i in range(1):
 
     lz = list()
 
-    file_myopic = 'log_myopic_identical_jul_17' + str(i)
+    file_myopic = 'log_myopic_identical_jul_22' + str(i)
 
     run_myopic(f_result, p_matrix, file_myopic, good_channel)
     f_result.write('\n')

@@ -24,7 +24,7 @@ def combination(n, k):
 
 N_NODES = 1
 
-N_CHANNELS = 7
+N_CHANNELS = 2
 
 # q-learning settings
 AGENT_STATE_WINDOWS_SIZE = 1

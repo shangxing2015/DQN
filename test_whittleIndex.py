@@ -1,6 +1,6 @@
 import time
 
-from config_2 import *
+from config_4 import *
 from env_markov_distinct_channel import Environment
 from whittleIndex import WhittleIndex
 

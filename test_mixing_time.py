@@ -1,32 +1,37 @@
 import numpy as np
 
-p_matrix = [(0.6, 0.4), (0.2, 0.8)]
+epsilon = 0.00001
 
-a = np.matrix(p_matrix)
+def cal_mix_time(p_matrix):
 
-b = a
 
-s0 = p_matrix[1][0] / (p_matrix[0][1] + p_matrix[1][0])
-s1 = 1 - s0
+    a = np.matrix(p_matrix)
 
-stable_dist = np.array([s0, s1])
+    b = a
 
-print stable_dist
+    s0 = p_matrix[1][0] / (p_matrix[0][1] + p_matrix[1][0])
+    s1 = 1 - s0
 
-for t in range(100):
+    stable_dist = np.array([s0, s1])
 
-    for i in range(t + 1):
-        b = b * a
+    # print stable_dist
 
-    temp = b - stable_dist
-    temp_1 = 0.5 * np.sum(np.abs(temp), 1)
+    for t in range(100):
 
-    print t
+        for i in range(t + 1):
+            b = b * a
 
-    print b
+        temp = b - stable_dist
+        temp_1 = 0.5 * np.sum(np.abs(temp), 1)
 
-    print temp_1
+        # print t
+        #
+        # print b
+        #
+        # print temp_1
 
-    if temp_1[0] < 0.00001 and temp_1[1] < 0.00001:
-        print t
-        break
+        if temp_1[0] < epsilon and temp_1[1] < epsilon:
+            #print t
+            break
+
+    return t

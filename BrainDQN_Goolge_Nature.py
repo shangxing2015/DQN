@@ -24,7 +24,7 @@ REPLAY_MEMORY = 100000  # number of previous transitions to remember
 BATCH_SIZE = 32  # size of minibatch
 UPDATE_PERIOD = 50  # target netowrk update period
 
-"""DQN with separte target estimation network (Atari Nature, Algorithm 1)"""
+"""DQN with separate target estimation network (Atari Nature, Algorithm 1)"""
 
 
 class BrainDQN:

@@ -1,7 +1,7 @@
 import heapq
 import math
 
-from config_2 import *
+from config_4 import *
 
 
 # Reference: 'Indexability of Restless Bandit Problems and Optimality of Whittle Index for Dynamic Multichannel Access'

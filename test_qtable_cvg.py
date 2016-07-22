@@ -89,8 +89,10 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
             f.write('\n')
     f.close()
 
-    print('count_cvg is %d' % count_cvg)
-    print(prev_value_dict)
+    f_result.write('count_cvg is %d' % count_cvg)
+    f_result.write('\n')
+    f_result.write(str(prev_value_dict))
+    f_result.write('\n')
 
     # evaluation
     total = 0
