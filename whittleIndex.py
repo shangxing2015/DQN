@@ -1,8 +1,8 @@
 import heapq
 import math
 
-from config_4 import *
 
+from config_4 import N_CHANNELS, DISCOUNT, N_SENSING
 
 # Reference: 'Indexability of Restless Bandit Problems and Optimality of Whittle Index for Dynamic Multichannel Access'
 

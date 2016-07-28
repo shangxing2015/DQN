@@ -7,6 +7,7 @@ import tensorflow as tf
 
 from config_2 import *
 from env_markov_distinct_channel import Environment
+import random
 
 CHANNEL_SIZE = N_CHANNELS
 HISTORY = AGENT_STATE_WINDOWS_SIZE
