@@ -27,6 +27,8 @@ class Environment():
         binary = [int(x) for x in bin(integer)[2:]]
         for i in xrange(len(binary)):
             result[-1-i] = binary[-1-i]
+
+
         return result
 
     def _encode_state(self, list):

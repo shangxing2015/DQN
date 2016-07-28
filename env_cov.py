@@ -42,7 +42,7 @@ c1 = [temp_A[1]]
 c2 = [temp_B]
 
 
-for i in range(2000):
+for i in range(500):
 
     P_A = A[idx_a]
     P_B = B[idx_b]
