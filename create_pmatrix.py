@@ -13,6 +13,8 @@ def combine_transition(chan_list_1, chan_list_2, A_1, A_2):
 
     chan_idx = [chan_all_list_org.index(i) for i in chan_all_list]
 
+    print chan_idx
+
     dim = 2**(len(chan_list_1)+len(chan_list_2))
 
     all_matrix = np.zeros((dim,dim))
@@ -72,41 +74,5 @@ def combine_transition(chan_list_1, chan_list_2, A_1, A_2):
 
 
 
-chan_list_1 = [0,1]
 
-chan_list_2 = [2]
-
-N_CORR = 2
-N_IND = 1
-
-n_corr_states = 2**N_CORR
-n_ind_states = 2**N_IND
-
-channel_state = [0,1]
-
-S_A = list(itertools.product(channel_state, repeat = N_CORR))
-S_B = list(itertools.product(channel_state, repeat = N_IND))
-
-
-
-
-A_1 = np.random.rand(n_corr_states,n_corr_states)
-sum_A_1 = np.sum(A_1, axis=1)
-
-
-for i in range(len(sum_A_1)):
-
-    A_1[i] = A_1[i]/sum_A_1[i]
-
-
-A_2 = np.random.rand(n_corr_states,n_ind_states)
-sum_A_2 = np.sum(A_2, axis=1)
-
-
-for i in range(len(sum_A_2)):
-
-    A_2[i] = A_2[i]/sum_A_2[i]
-
-
-print(combine_transition(chan_list_1,chan_list_2,A_1, A_2))
 

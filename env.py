@@ -2,7 +2,7 @@ import math
 import random
 
 
-class Environment:
+class Environment():
     """
 
     A state is an integer, in [0...2^{n_channels}].
@@ -48,6 +48,15 @@ class Environment:
             self.current_state = i+1
         else:
             self.current_state = 0
+
+
+    def get_state(self):
+
+        state = self._decode_state(self.current_state)
+
+        self._state_transit()
+
+        return state
 
     def step(self, action):
         '''
