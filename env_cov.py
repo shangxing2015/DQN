@@ -44,8 +44,12 @@ c2 = [temp_B]
 
 for i in range(500):
 
+
+
     P_A = A[idx_a]
     P_B = B[idx_b]
+
+
 
     rand_A = random.random()
     rand_B = random.random()
@@ -55,12 +59,12 @@ for i in range(500):
         temp_A = S_A[0]
         idx_a = 0
 
-    elif rand_A <= sum(P_A[0:1]) and rand_A > P_A[0]:
+    elif rand_A <= sum(P_A[0:2]) and rand_A > P_A[0]:
 
         temp_A = S_A[1]
         idx_a = 1
 
-    elif rand_A <= sum(P_A[0:2]) and rand_A > sum(P_A[0:1]):
+    elif rand_A <= sum(P_A[0:3]) and rand_A > sum(P_A[0:2]):
 
         temp_A = S_A[2]
         idx_a = 2

@@ -5,10 +5,11 @@ import math
 import random
 
 
+
 class Environment():
     """
 
-    A state is an integer, in [0...2^{n_channels}].
+    A state is an integer, in [0...2^{n_channels}-1].
     """
 
     def __init__(self, config):
@@ -18,6 +19,7 @@ class Environment():
         self.chan_list = config['channel_list']
         self.n_subnets = config['n_subnets']
 
+
         for p in self.p_matrix:
 
             for p_sub in p:
@@ -26,10 +28,24 @@ class Environment():
                     count += p_sub[i]
                     p_sub[i] = count
 
-
-        self.current_state_int = [0 for i in range(self.n_subnets)]
-        self.current_state_bin = [0 for i in range(self.n_channels)]
         self.chan_idx = self._get_channel_order()
+
+
+
+        self.current_state_int = [random.randint(0, 2**len(self.chan_list[i])-1) for i in range(self.n_subnets)]
+
+        bin_temp = []
+
+        for i in range(self.n_subnets):
+
+            state = self.current_state_int[i]
+
+            bin_temp += (self._decode_state(state, len(self.chan_list[i])))
+
+
+
+        self.current_state_bin = [bin_temp[i] for i in self.chan_idx]
+
 
 
 
@@ -65,6 +81,7 @@ class Environment():
     def observation_size(self):
         return self.n_channels
 
+
     def _state_transit(self):
 
         temp_state = []
@@ -75,13 +92,11 @@ class Environment():
 
             tmp, flag = random.random(), False
 
-            # print self.chan_list[i]
-
             n_states = 2**len(self.chan_list[i])
-            # print n_states
+
 
             for j in range(n_states-1):
-                if tmp >= p[j] and tmp <p[j+1]:
+                if tmp > p[j] and tmp <= p[j+1]:
                     flag = True
                     break
 
@@ -91,15 +106,15 @@ class Environment():
                 temp_state.append(0)
 
 
-        self.current_state_int = temp_state
 
+        self.current_state_int = temp_state
 
 
         bin_temp = []
 
         for i in range(self.n_subnets):
 
-            state = temp_state[i]
+            state = self.current_state_int[i]
 
             bin_temp += (self._decode_state(state, len(self.chan_list[i])))
 
@@ -116,6 +131,7 @@ class Environment():
         self._state_transit()
 
         return state
+
 
     def step(self, action):
         '''
