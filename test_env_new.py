@@ -16,41 +16,33 @@ import itertools
 N_CORR = 2
 N_IND = 1
 
-n_corr_states = 2**N_CORR
-n_ind_states = 2**N_IND
+n_corr_states = 2 ** N_CORR
+n_ind_states = 2 ** N_IND
 
-channel_state = [0,1]
+channel_state = [0, 1]
 
-S_A = list(itertools.product(channel_state, repeat = N_CORR))
-S_B = list(itertools.product(channel_state, repeat = N_IND))
+S_A = list(itertools.product(channel_state, repeat=N_CORR))
+S_B = list(itertools.product(channel_state, repeat=N_IND))
 
-
-
-
-A = np.random.rand(n_corr_states,n_corr_states)
+A = np.random.rand(n_corr_states, n_corr_states)
 sum_A = np.sum(A, axis=1)
 
-
 for i in range(len(sum_A)):
+    A[i] = A[i] / sum_A[i]
 
-    A[i] = A[i]/sum_A[i]
-
-
-B = np.random.rand(n_ind_states,n_ind_states)
+B = np.random.rand(n_ind_states, n_ind_states)
 
 sum_B = np.sum(B, axis=1)
 
 for i in range(len(sum_B)):
-    B[i] = B[i]/sum_B[i]
-
-
+    B[i] = B[i] / sum_B[i]
 
 config = {}
 
-config['p_matrix'] =[A, B]
+config['p_matrix'] = [A, B]
 config['n_nodes'] = 1
 config['n_channels'] = 3
-config['channel_list'] = [[0,1], [2]]
+config['channel_list'] = [[0, 1], [2]]
 config['n_subnets'] = 2
 
 env = Environment(config)
@@ -58,9 +50,7 @@ env = Environment(config)
 history = []
 
 for i in range(1000):
-
     history.append(env.get_state())
-
 
 data = np.array(history)
 

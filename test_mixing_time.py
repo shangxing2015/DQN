@@ -2,9 +2,8 @@ import numpy as np
 
 epsilon = 0.00001
 
+
 def cal_mix_time(p_matrix):
-
-
     a = np.matrix(p_matrix)
 
     b = a
@@ -31,7 +30,7 @@ def cal_mix_time(p_matrix):
         # print temp_1
 
         if temp_1[0] < epsilon and temp_1[1] < epsilon:
-            #print t
+            # print t
             break
 
     return t

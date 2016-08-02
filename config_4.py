@@ -24,7 +24,7 @@ def combination(n, k):
 
 N_NODES = 1
 
-N_CHANNELS = 2
+N_CHANNELS = 5
 
 # q-learning settings
 AGENT_STATE_WINDOWS_SIZE = 1
@@ -42,7 +42,7 @@ ACTION_LIST = [i for i in range(N_CHANNELS)]
 ACTION_SPACE = list(itertools.combinations(ACTION_LIST, N_SENSING))
 
 # DISCOUNT / AVERAGE REWARD
-DISCOUNT = False
+DISCOUNT = True
 # temp_prob = [(random.random(), random.random()) for i in range(int(N_CHANNELS))]
 # P_DISTINCT_MATRIX = [[(x, 1 - x), (y, 1 - y)] for x, y in temp_prob]
 
@@ -54,6 +54,6 @@ B = [1 for i in range(N_CHANNELS)]
 
 # for writing to the file
 PERIOD = 100  # for writing to the file
-T_THRESHOLD = 3000000  # 5000000# num of plays; 80000000
+T_THRESHOLD = 300000  # 5000000# num of plays; 80000000
 T_EVAL = 50000
 T_CVG = 15000

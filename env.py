@@ -26,8 +26,7 @@ class Environment():
         result = [0 for i in xrange(self.n_channels)]
         binary = [int(x) for x in bin(integer)[2:]]
         for i in xrange(len(binary)):
-            result[-1-i] = binary[-1-i]
-
+            result[-1 - i] = binary[-1 - i]
 
         return result
 
@@ -41,16 +40,15 @@ class Environment():
     def _state_transit(self):
         p = self.p_matrix[self.current_state]
         tmp, flag = random.random(), False
-        for i in range(self.n_states-1):
-            if tmp >= p[i] and tmp <p[i+1]:
+        for i in range(self.n_states - 1):
+            if tmp >= p[i] and tmp < p[i + 1]:
                 flag = True
                 break
 
         if flag:
-            self.current_state = i+1
+            self.current_state = i + 1
         else:
             self.current_state = 0
-
 
     def get_state(self):
 

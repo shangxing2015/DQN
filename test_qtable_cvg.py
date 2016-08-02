@@ -102,6 +102,8 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
 
     start_time = time.time()
 
+    gamma = 0.8
+
     for i in range(T_EVAL):
         count = i + 1
 
@@ -123,10 +125,11 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
         #   print(action_evn)
 
         observation, reward, terminal = env.step(action_evn)
-        total += reward
+
+        total += reward*(gamma**i)
 
         if (count) % PERIOD == 0:
-            accum_reward = total / float(count)
+            accum_reward = total
 
             duration = time.time() - start_time
             f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
@@ -135,6 +138,6 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
     f.close()
 
     count = i + 1
-    accum_reward = total / float(count)
+    accum_reward = total
     duration = time.time() - start_time
     f_result.write('Q table final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))

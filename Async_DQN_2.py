@@ -178,7 +178,7 @@ class Async_DQN:
         duration = time.time() - start_time
         accum_reward = total / float(count)
         f_result.write('Async Qlearing of thread %d final accu_reward is %f, and time duration is %f\n' % (
-        thread_id, accum_reward, duration))
+            thread_id, accum_reward, duration))
 
         print("thread %d end" % thread_id)
 
@@ -186,8 +186,8 @@ class Async_DQN:
 
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
         q_values_temp = \
-        self.q_values.eval(session=self.session, feed_dict={self.state_placeholder: current_state_temp})[
-            0]  # data structure: [[1,2,3]]
+            self.q_values.eval(session=self.session, feed_dict={self.state_placeholder: current_state_temp})[
+                0]  # data structure: [[1,2,3]]
 
         print(current_state_temp)
 
@@ -239,8 +239,8 @@ class Async_DQN:
     def get_target_action(self, currentState, epsilon, count):
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
         q_values_temp = \
-        self.q_values_T.eval(session=self.session, feed_dict={self.state_placeholder_T: current_state_temp})[
-            0]  # data structure: [[1,2,3]]
+            self.q_values_T.eval(session=self.session, feed_dict={self.state_placeholder_T: current_state_temp})[
+                0]  # data structure: [[1,2,3]]
 
         if count > 15 and count < 50:
             print('q_values')

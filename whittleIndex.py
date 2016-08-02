@@ -1,8 +1,8 @@
 import heapq
 import math
 
-
 from config_4 import N_CHANNELS, DISCOUNT, N_SENSING
+
 
 # Reference: 'Indexability of Restless Bandit Problems and Optimality of Whittle Index for Dynamic Multichannel Access'
 
@@ -38,7 +38,7 @@ class WhittleIndex:
         p = self.p_matrix[chan_idx]
 
         Tk_omega = (p[0][1] - math.pow(p[1][1] - p[0][1], k) * (p[0][1] - (1 + p[0][1] - p[1][1]) * omega)) / (
-        1 + p[0][1] - p[1][1])
+            1 + p[0][1] - p[1][1])
 
         return Tk_omega
 
@@ -78,9 +78,9 @@ class WhittleIndex:
             if p[1][1] >= p[0][1]:
 
                 c_1_num = (1 - self.gamma * p[1][1]) * (
-                1 - math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i)))
+                    1 - math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i)))
                 c_1_denum_part_1 = (1 - self.gamma * p[1][1]) * (
-                1 - math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i) + 1))
+                    1 - math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i], i) + 1))
                 c_1_denum_part_2 = (1 - self.gamma) * math.pow(self.gamma, self._L_pos_func(p[0][1], self.belief[i],
                                                                                             i) + 1) * self._k_step_belief_update(
                     self._L_pos_func(p[0][1], self.belief[i], i), p[0][1], i)
@@ -96,15 +96,15 @@ class WhittleIndex:
                     self.whittle_idx[i] = self.belief[i] * self.B[i]
                 elif self.belief[i] >= self.init_belief[i] and self.belief[i] < p[1][1]:
                     self.whittle_idx[i] = self.belief[i] * self.B[i] / (
-                    1 - self.gamma * p[1][1] + self.gamma * self.belief[i])
+                        1 - self.gamma * p[1][1] + self.gamma * self.belief[i])
                 else:
                     temp_num = self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i], i) + c_2 * (
-                    1 - self.gamma) * (self.gamma * (1 - self.gamma * p[1][1]) - self.gamma * (
-                    self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i], i)))
+                        1 - self.gamma) * (self.gamma * (1 - self.gamma * p[1][1]) - self.gamma * (
+                        self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i], i)))
 
                     temp_denum = 1 - self.gamma * p[1][1] - c_1 * (
-                    self.gamma * (1 - self.gamma * p[1][1]) - self.gamma * (
-                    self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i], i)))
+                        self.gamma * (1 - self.gamma * p[1][1]) - self.gamma * (
+                            self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i], i)))
                     self.whittle_idx[i] = temp_num * self.B[i] / temp_denum
 
 
@@ -129,24 +129,27 @@ class WhittleIndex:
                     self.whittle_idx[i] = self.belief[i] * self.B[i]
                 elif self.belief[i] >= self._k_step_belief_update(1, p[1][1], i) and self.belief[i] < p[0][1]:
                     self.whittle_idx[i] = (self.gamma * p[0][1] + self.belief[i] * (1 - self.gamma)) * self.B[i] / (
-                    1 + self.gamma * (p[0][1] - self.belief[i]))
+                        1 + self.gamma * (p[0][1] - self.belief[i]))
                 elif self.belief[i] >= self.init_belief[i] and self.belief[i] < self._k_step_belief_update(1, p[1][1],
                                                                                                            i):
                     temp_num = (1 - self.gamma + self.gamma * c_4) * (
-                    self.gamma * p[0][1] + self.belief[i] * (1 - self.gamma))
+                        self.gamma * p[0][1] + self.belief[i] * (1 - self.gamma))
                     temp_denum = 1 - self.gamma * (1 - p[0][1]) - c_3 * (
-                    math.pow(self.gamma, 2) * p[0][1] + self.gamma * self.belief[i] - math.pow(self.gamma, 2) *
-                    self.belief[i])
+                        math.pow(self.gamma, 2) * p[0][1] + self.gamma * self.belief[i] - math.pow(self.gamma, 2) *
+                        self.belief[i])
                     self.whittle_idx[i] = temp_num * self.B[i] / temp_denum
                 else:
                     temp_num = (1 - self.gamma) * (
-                    self.gamma * p[0][1] + self.belief[i] - self.gamma * self._k_step_belief_update(1, self.belief[i],
-                                                                                                    i)) - c_4 * self.gamma * (
-                    self.gamma * self._k_step_belief_update(1, self.belief[i], i) - self.gamma * p[0][1] - self.belief[
-                        i])
+                        self.gamma * p[0][1] + self.belief[i] - self.gamma * self._k_step_belief_update(1,
+                                                                                                        self.belief[i],
+                                                                                                        i)) - c_4 * self.gamma * (
+                        self.gamma * self._k_step_belief_update(1, self.belief[i], i) - self.gamma * p[0][1] -
+                        self.belief[
+                            i])
                     temp_denum = 1 - self.gamma * (1 - p[0][1]) + c_3 * self.gamma * (
-                    self.gamma * self._k_step_belief_update(1, self.belief[i], i) - self.gamma * p[0][1] - self.belief[
-                        i])
+                        self.gamma * self._k_step_belief_update(1, self.belief[i], i) - self.gamma * p[0][1] -
+                        self.belief[
+                            i])
                     self.whittle_idx[i] = temp_num * self.B[i] / temp_denum
 
     # Thm.5
@@ -162,7 +165,7 @@ class WhittleIndex:
                     self.whittle_idx[i] = self.belief[i] * self.B[i]
                 elif self.belief[i] > p[0][1] and self.belief[i] < self.init_belief[i]:
                     temp_num = (self.belief[i] - self._k_step_belief_update(1, self.belief[i], i)) * (
-                    self._L_pos_func(p[0][1], self.belief[i], i) + 1) + self._k_step_belief_update(
+                        self._L_pos_func(p[0][1], self.belief[i], i) + 1) + self._k_step_belief_update(
                         self._L_pos_func(p[0][1], self.belief[i], i), p[0][1], i)
                     temp_denum = 1 - p[1][1] + (self.belief[i] - self._k_step_belief_update(1, self.belief[i],
                                                                                             i)) * self._L_pos_func(
@@ -190,6 +193,7 @@ class WhittleIndex:
                     self.whittle_idx[i] = temp_num * self.B[i] / temp_denum
                 else:  # condition?
                     self.whittle_idx[i] = p[0][1] * self.B[i] / (1 + p[0][1] - self.belief[i])
+
 
     def getAction(self, prev_action, observation, count):
 

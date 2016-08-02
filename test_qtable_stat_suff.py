@@ -33,7 +33,6 @@ def state_transition_function(state, action, observation, p_matrix):
 
     temp = list()
 
-
     for index in range(len(observation)):
         if observation[index] == 0:
             item = (0, 1)

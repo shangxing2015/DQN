@@ -38,7 +38,7 @@ def run_myopic(f_result, p_matrix=P_DISTINCT_MATRIX, fileName='log_myopic', good
             accum_reward = total / float(count)
             duration = time.time() - start_time
             f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
-            count, accum_reward, str(action), duration))
+                count, accum_reward, str(action), duration))
             f.write('\n')
 
     f.close()

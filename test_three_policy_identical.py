@@ -39,7 +39,7 @@ for i in range(10):
         lz.append(lz_complexity_markov(p))
 
     f_result.write('the LZ complexity of each channel is: %s, and the the average LZ complexity is %f \n' % (
-    str(lz), sum(lz) / float(len(lz))))
+        str(lz), sum(lz) / float(len(lz))))
     f_result.write('\n')
 
     file_myopic = 'log_myopic_identical_' + str(i)

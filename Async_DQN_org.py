@@ -184,8 +184,8 @@ class Async_DQN:
     def getAction(self, currentState, epsilon):
         current_state_temp = np.reshape(currentState, (-1, STATE_SIZE))  # !!! [[]]
         q_values_temp = \
-        self.q_values.eval(session=self.session, feed_dict={self.state_placeholder: current_state_temp})[
-            0]  # data structure: [[1,2,3]]
+            self.q_values.eval(session=self.session, feed_dict={self.state_placeholder: current_state_temp})[
+                0]  # data structure: [[1,2,3]]
         action = np.zeros(int(ACTION_SIZE))
 
         action_index = 0

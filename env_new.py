@@ -1,9 +1,7 @@
 __author__ = 'shangxing'
 
-
 import math
 import random
-
 
 
 class Environment():
@@ -19,7 +17,6 @@ class Environment():
         self.chan_list = config['channel_list']
         self.n_subnets = config['n_subnets']
 
-
         for p in self.p_matrix:
 
             for p_sub in p:
@@ -30,25 +27,16 @@ class Environment():
 
         self.chan_idx = self._get_channel_order()
 
-
-
-        self.current_state_int = [random.randint(0, 2**len(self.chan_list[i])-1) for i in range(self.n_subnets)]
+        self.current_state_int = [random.randint(0, 2 ** len(self.chan_list[i]) - 1) for i in range(self.n_subnets)]
 
         bin_temp = []
 
         for i in range(self.n_subnets):
-
             state = self.current_state_int[i]
 
             bin_temp += (self._decode_state(state, len(self.chan_list[i])))
 
-
-
         self.current_state_bin = [bin_temp[i] for i in self.chan_idx]
-
-
-
-
 
     def _get_channel_order(self):
 
@@ -64,14 +52,11 @@ class Environment():
 
         return chan_idx
 
-
-
-
     def _decode_state(self, integer, size):
         result = [0 for i in xrange(size)]
         binary = [int(x) for x in bin(integer)[2:]]
         for i in xrange(len(binary)):
-            result[-1-i] = binary[-1-i]
+            result[-1 - i] = binary[-1 - i]
         return result
 
     def _encode_state(self, list):
@@ -80,7 +65,6 @@ class Environment():
     @property
     def observation_size(self):
         return self.n_channels
-
 
     def _state_transit(self):
 
@@ -92,37 +76,28 @@ class Environment():
 
             tmp, flag = random.random(), False
 
-            n_states = 2**len(self.chan_list[i])
+            n_states = 2 ** len(self.chan_list[i])
 
-
-            for j in range(n_states-1):
-                if tmp > p[j] and tmp <= p[j+1]:
+            for j in range(n_states - 1):
+                if tmp > p[j] and tmp <= p[j + 1]:
                     flag = True
                     break
 
             if flag:
-                temp_state.append(j+1)
+                temp_state.append(j + 1)
             else:
                 temp_state.append(0)
 
-
-
         self.current_state_int = temp_state
-
 
         bin_temp = []
 
         for i in range(self.n_subnets):
-
             state = self.current_state_int[i]
 
             bin_temp += (self._decode_state(state, len(self.chan_list[i])))
 
-
-
         self.current_state_bin = [bin_temp[i] for i in self.chan_idx]
-
-
 
     def get_state(self):
 
@@ -131,7 +106,6 @@ class Environment():
         self._state_transit()
 
         return state
-
 
     def step(self, action):
         '''

@@ -6,7 +6,8 @@ from whittleIndex import WhittleIndex
 
 
 def run_whittleIndex(f_result, p_matrix=P_DISTINCT_MATRIX, fileName='log_whittle'):
-    gamma = 1
+
+    gamma = 0.8
 
     env = Environment(p_matrix)
 
@@ -27,23 +28,23 @@ def run_whittleIndex(f_result, p_matrix=P_DISTINCT_MATRIX, fileName='log_whittle
     for i in range(T_EVAL):
 
         observation, reward, terminal = env.step(action)
-        total += reward
+        total += reward*(gamma**i)
 
         action = brain.getAction(action, observation, 0)
 
         count = i + 1
 
         if count % PERIOD == 0:
-            accum_reward = total / float(count)
+            accum_reward = total
             duration = time.time() - start_time
             f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
-            count, accum_reward, str(action), duration))
+                count, accum_reward, str(action), duration))
             f.write('\n')
 
     f.close()
 
     duration = time.time() - start_time
     count = i + 1
-    accum_reward = total / float(count)
+    accum_reward = total
     duration = time.time() - start_time
     f_result.write('Whittle Index final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))

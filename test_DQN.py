@@ -66,7 +66,7 @@ while index <= T_THRESHOLD:
     if index % PERIOD == 0:
         accum_reward = total / float(index)
         f.write('Index %d: accu_reward is %.2f, action is: %s and time duration is %.2f' % (
-        index, accum_reward, str(action_env), duration))
+            index, accum_reward, str(action_env), duration))
         f.write('\n')
 
 f.close()
