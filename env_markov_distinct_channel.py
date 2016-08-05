@@ -15,12 +15,14 @@ class Environment:
         self.n_channels = N_CHANNELS
         self.n_nodes = N_NODES
         self.p_matrix = p_matrix
-        self.current_state = [random.randint(0, 1) for i in range(self.n_channels)]
+        self.current_state = [0]+[0 for i in range(self.n_channels-1)]
         self.next_state = self.current_state
 
     def _state_transit(self):
 
         for i in range(self.n_channels):
+
+
 
             temp = random.random()
 

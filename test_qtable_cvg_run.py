@@ -2,7 +2,7 @@ from test_qtable_cvg import *
 import random
 from test_whittleIndex import run_whittleIndex
 
-for i in range(10):
+for i in range(1):
     # # CASE: same channels
 
     #
@@ -17,7 +17,10 @@ for i in range(10):
     finalResult = 'final_result_5_channel_identical_Jul_21' + str(i)
     f_result = open(finalResult, 'w')
 
-    for j in range(10):
+    total = 0
+    total_q = 0
+
+    for j in range(T_TIMES):
         # p_matrix = [[(0.6, 0.4), (0.2, 0.8)]] * (N_CHANNELS)
 
         # p_01_list = [0.8, 0.6, 0.4, 0.9, 0.8, 0.6, 0.7]
@@ -39,8 +42,16 @@ for i in range(10):
         file_whittle = 'log_whittle_cvg_5_jul_19' + str(i) + '_' + str(j)
         file_qtable = 'log_q_table_cvg_5_jul_21' + str(i) + '_' + str(j)
 
-        run_whittleIndex(f_result, p_matrix, file_whittle)
+        total += run_whittleIndex(f_result, p_matrix, file_whittle)
         f_result.write('\n')
 
-        run_test(f_result, p_matrix, file_qtable)
+
+        total_q += run_test(f_result, p_matrix, file_qtable)
         f_result.write('\n')
+
+
+
+    f_result.write('Whittle Index final accu_reward is %f' % (total/float((j+1)*T_TIMES)))
+    f_result.write('\n')
+    f_result.write('qtable final accu_reward is %f' % (total_q/float((j+1)*T_TIMES)))
+    f_result.write('\n')

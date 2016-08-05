@@ -110,11 +110,11 @@ class BrainDQN:
             else:
 
                 temp = np.amax(q_value_batch[i])
-                print(temp)
+                #print(temp)
 
                 y_batch.append(reward_batch[i] + GAMMA * temp)
 
-                print(reward_batch[i] + GAMMA * temp)
+                #print(reward_batch[i] + GAMMA * temp)
 
         # step 3: train
         self.train_op.run(feed_dict={self.state_placeholder: state_batch, self.action_placeholder: action_batch,
@@ -134,6 +134,7 @@ class BrainDQN:
             self.replayMemory.popleft()
         if self.timeStep > OBSERVE:
             # Train the network
+            print('trainNetwork')
             self.trainQNetwork()
 
         if self.timeStep % self.update_period == 0:
@@ -172,8 +173,8 @@ class BrainDQN:
         action = np.zeros(int(ACTION_SIZE))
         action_index = 0
 
-        print('q values')
-        print(q_values_temp)
+        # print('q values')
+        # print(q_values_temp)
 
         action_index = np.argmax(q_values_temp)
 

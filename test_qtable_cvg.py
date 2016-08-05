@@ -1,5 +1,6 @@
 import time
 from itertools import product
+import numpy as np
 
 from config_4 import *
 from env_markov_distinct_channel import Environment
@@ -44,7 +45,7 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
     # init_state = tuple([tuple([-1 for i in xrange(N_CHANNELS)]) for j in xrange(history)])
 
 
-    init_state = tuple([tuple([0, -1])])
+    init_state = tuple([tuple([0]+[-1 for i in range(N_CHANNELS-1)])])
     q_agent = QAgent(state_transition_function, init_state, all_actions_list)
 
     total = 0
@@ -93,51 +94,68 @@ def run_test(f_result, p_matrix=P_MATRIX, fileName='log_q_table', history=AGENT_
     f_result.write('\n')
     f_result.write(str(prev_value_dict))
     f_result.write('\n')
+    f_result.write('final policy\n')
+    f_result.write(str(q_agent.get_policy()))
+    f_result.write('\n')
 
     # evaluation
-    total = 0
+    accum_reward = 0
 
-    fileName = fileName + '_target'
-    f = open(fileName, 'w')
+    # fileName = fileName + '_target'
+    # f = open(fileName, 'w')
 
     start_time = time.time()
 
-    gamma = 0.8
+    gamma = GAMMA
 
-    for i in range(T_EVAL):
-        count = i + 1
+    for j in range(T_TIMES):
 
-        if type(observation).__module__ == 'numpy':
+        total = 0
+        env = Environment(p_matrix)
+        observation = np.array([0] + [-1 for l in range(N_CHANNELS-1)])
+
+
+        reward = 0
+
+        for i in range(T_EVAL):
+            count = i + 1
+
+            # if type(observation).__module__ == 'numpy':
+            #     observation = tuple(observation.tolist())
+            #
+            # else:
+            #     print 'train finished'
+
+
             observation = tuple(observation.tolist())
+            action = q_agent.target_observe_and_act(observation, reward, count)
 
-        else:
-            print 'train finished'
-        action = q_agent.target_observe_and_act(observation, reward, count)
+            action_evn = list(action)
 
-        action_evn = list(action)
+            # if count <= 50:
+            #
+            #   print('observation')
+            #   print(observation)
+            #
+            #   print('action')
+            #   print(action_evn)
 
-        # if count <= 50:
-        #
-        #   print('observation')
-        #   print(observation)
-        #
-        #   print('action')
-        #   print(action_evn)
+            observation, reward, terminal = env.step(action_evn)
 
-        observation, reward, terminal = env.step(action_evn)
+            total += reward*(gamma**i)
 
-        total += reward*(gamma**i)
+            # if (count) % PERIOD == 0:
+            #     accum_reward = total
+            #
+                #duration = time.time() - start_time
+                # f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
+                    #count, accum_reward, str(action), duration))
+                # f.write('\n')
+        # f.close()
 
-        if (count) % PERIOD == 0:
-            accum_reward = total
+        count = i + 1
+        accum_reward += total
+        duration = time.time() - start_time
+        f_result.write('Q table final accu_reward is %f and time duration is %f\n' % (total, duration))
 
-            duration = time.time() - start_time
-            f.write('Index %d: accu_reward is %f, action is: %s and time duration is %f' % (
-                count, accum_reward, str(action), duration))
-            f.write('\n')
-    f.close()
-
-    count = i + 1
-    accum_reward = total
-    duration = time.time() - start_time
-    f_result.write('Q table final accu_reward is %f and time duration is %f\n' % (accum_reward, duration))
+    return accum_reward

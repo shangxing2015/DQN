@@ -13,4 +13,4 @@ config = {}
 config['p_matrix'] = [A2, A1]
 
 
-print 2**5
+print 0.99**1000

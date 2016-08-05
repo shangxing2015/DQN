@@ -1,0 +1,312 @@
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.201679 and time duration is 0.383376
+Whittle Index final accu_reward is 0.041613 and time duration is 0.765734
+Whittle Index final accu_reward is 0.249677 and time duration is 1.146519
+Whittle Index final accu_reward is 0.241667 and time duration is 1.529919
+Whittle Index final accu_reward is 0.000385 and time duration is 1.913024
+Whittle Index final accu_reward is 0.009603 and time duration is 2.295418
+Whittle Index final accu_reward is 0.000015 and time duration is 2.678249
+Whittle Index final accu_reward is 0.201985 and time duration is 3.060363
+Whittle Index final accu_reward is 0.241923 and time duration is 3.441186
+Whittle Index final accu_reward is 0.000000 and time duration is 3.823167
+
+count_cvg is 9
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (3,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, -1, 1, -1),): (0,), ((-1, -1, -1, -1, 1),): (1,), ((-1, -1, 1, -1, -1),): (3,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (0,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6187279405230458), ((-1, -1, 0, -1, -1),): ((2,), 0.6139659182582815), ((-1, 0, -1, -1, -1),): ((1,), 0.6148102995886768), ((1, -1, -1, -1, -1),): ((3,), 0.569284655033204), ((0, -1, -1, -1, -1),): ((0,), 0.61050413070806), ((-1, -1, -1, 1, -1),): ((0,), 0.5734531041604279), ((-1, -1, -1, -1, 1),): ((1,), 0.5700328070332409), ((-1, -1, 1, -1, -1),): ((3,), 0.5782558586598635), ((-1, -1, -1, -1, 0),): ((4,), 0.6238261918391831), ((-1, 1, -1, -1, -1),): ((0,), 0.571115847244801)}
+Q table final accu_reward is 0.009933 and time duration is 0.538952
+Q table final accu_reward is 0.208387 and time duration is 1.075260
+Q table final accu_reward is 0.040001 and time duration is 1.613492
+Q table final accu_reward is 0.209921 and time duration is 2.153614
+Q table final accu_reward is 0.208065 and time duration is 2.690728
+Q table final accu_reward is 0.001603 and time duration is 3.227999
+Q table final accu_reward is 0.201677 and time duration is 3.766627
+Q table final accu_reward is 0.001665 and time duration is 4.303859
+Q table final accu_reward is 0.201984 and time duration is 4.842493
+Q table final accu_reward is 0.208003 and time duration is 5.380760
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.000080 and time duration is 0.379394
+Whittle Index final accu_reward is 0.001613 and time duration is 0.765083
+Whittle Index final accu_reward is 0.008336 and time duration is 1.151086
+Whittle Index final accu_reward is 0.200387 and time duration is 1.532416
+Whittle Index final accu_reward is 0.009603 and time duration is 1.916824
+Whittle Index final accu_reward is 0.240320 and time duration is 2.302604
+Whittle Index final accu_reward is 0.240323 and time duration is 2.686780
+Whittle Index final accu_reward is 0.200387 and time duration is 3.072112
+Whittle Index final accu_reward is 0.241603 and time duration is 3.455069
+Whittle Index final accu_reward is 0.240333 and time duration is 3.837465
+
+count_cvg is 72
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (1,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (0,), ((-1, -1, -1, -1, 1),): (0,), ((-1, -1, -1, 1, -1),): (0,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (3,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6167507372945474), ((-1, -1, 0, -1, -1),): ((2,), 0.6104790764971721), ((-1, 0, -1, -1, -1),): ((1,), 0.6163729976568315), ((1, -1, -1, -1, -1),): ((1,), 0.5734178233634224), ((0, -1, -1, -1, -1),): ((0,), 0.621588236677533), ((-1, -1, 1, -1, -1),): ((0,), 0.5758365751214088), ((-1, -1, -1, -1, 1),): ((0,), 0.5754203891158615), ((-1, -1, -1, 1, -1),): ((0,), 0.5823348107627428), ((-1, -1, -1, -1, 0),): ((4,), 0.6201431563668869), ((-1, 1, -1, -1, -1),): ((3,), 0.5710306804799274)}
+Q table final accu_reward is 0.000385 and time duration is 0.541740
+Q table final accu_reward is 0.008077 and time duration is 1.082880
+Q table final accu_reward is 0.001665 and time duration is 1.620472
+Q table final accu_reward is 0.000064 and time duration is 2.156081
+Q table final accu_reward is 0.008013 and time duration is 2.697422
+Q table final accu_reward is 0.001921 and time duration is 3.236847
+Q table final accu_reward is 0.009997 and time duration is 3.775702
+Q table final accu_reward is 0.248067 and time duration is 4.314851
+Q table final accu_reward is 0.041603 and time duration is 4.851121
+Q table final accu_reward is 0.200065 and time duration is 5.388893
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.201667 and time duration is 0.378813
+Whittle Index final accu_reward is 0.041616 and time duration is 0.759391
+Whittle Index final accu_reward is 0.040013 and time duration is 1.138992
+Whittle Index final accu_reward is 0.241997 and time duration is 1.521401
+Whittle Index final accu_reward is 0.040384 and time duration is 1.902452
+Whittle Index final accu_reward is 0.041665 and time duration is 2.284354
+Whittle Index final accu_reward is 0.000015 and time duration is 2.665316
+Whittle Index final accu_reward is 0.241664 and time duration is 3.046911
+Whittle Index final accu_reward is 0.040013 and time duration is 3.428031
+Whittle Index final accu_reward is 0.008333 and time duration is 3.811388
+
+count_cvg is 8
+{((-1, -1, 0, -1, -1),): (2,), ((-1, -1, -1, 0, -1),): (3,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (2,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, -1, 1, -1),): (4,), ((-1, -1, -1, -1, 1),): (2,), ((-1, -1, 1, -1, -1),): (4,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (3,)}
+final policy
+{((-1, -1, 0, -1, -1),): ((2,), 0.6153500401970134), ((-1, -1, -1, 0, -1),): ((3,), 0.6185171993323855), ((-1, 0, -1, -1, -1),): ((1,), 0.6225530578346344), ((1, -1, -1, -1, -1),): ((2,), 0.5714619330358267), ((0, -1, -1, -1, -1),): ((0,), 0.6195980471193974), ((-1, -1, -1, 1, -1),): ((4,), 0.5757845832098849), ((-1, -1, -1, -1, 1),): ((2,), 0.5699339885221171), ((-1, -1, 1, -1, -1),): ((4,), 0.5713230407587476), ((-1, -1, -1, -1, 0),): ((4,), 0.6137666093927512), ((-1, 1, -1, -1, -1),): ((3,), 0.5781881483509732)}
+Q table final accu_reward is 0.209613 and time duration is 0.557810
+Q table final accu_reward is 0.240387 and time duration is 1.117318
+Q table final accu_reward is 0.000067 and time duration is 1.671950
+Q table final accu_reward is 0.249616 and time duration is 2.226872
+Q table final accu_reward is 0.048079 and time duration is 2.780153
+Q table final accu_reward is 0.201923 and time duration is 3.336043
+Q table final accu_reward is 0.040003 and time duration is 3.894931
+Q table final accu_reward is 0.009935 and time duration is 4.451961
+Q table final accu_reward is 0.241933 and time duration is 5.007424
+Q table final accu_reward is 0.008003 and time duration is 5.566819
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.200016 and time duration is 0.382096
+Whittle Index final accu_reward is 0.049600 and time duration is 0.764733
+Whittle Index final accu_reward is 0.208065 and time duration is 1.147003
+Whittle Index final accu_reward is 0.209613 and time duration is 1.528119
+Whittle Index final accu_reward is 0.049923 and time duration is 1.910429
+Whittle Index final accu_reward is 0.048067 and time duration is 2.294278
+Whittle Index final accu_reward is 0.040003 and time duration is 2.676586
+Whittle Index final accu_reward is 0.041615 and time duration is 3.059655
+Whittle Index final accu_reward is 0.008387 and time duration is 3.443645
+Whittle Index final accu_reward is 0.240333 and time duration is 3.826421
+
+count_cvg is 353
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (1,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (3,), ((-1, -1, -1, -1, 1),): (2,), ((-1, -1, -1, 1, -1),): (1,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (4,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6167787034831863), ((-1, -1, 0, -1, -1),): ((2,), 0.6128028203667412), ((-1, 0, -1, -1, -1),): ((1,), 0.6188754854468265), ((1, -1, -1, -1, -1),): ((1,), 0.5730474727505832), ((0, -1, -1, -1, -1),): ((0,), 0.6213895723142359), ((-1, -1, 1, -1, -1),): ((3,), 0.5765700330794356), ((-1, -1, -1, -1, 1),): ((2,), 0.5767638733116102), ((-1, -1, -1, 1, -1),): ((1,), 0.5759624368320063), ((-1, -1, -1, -1, 0),): ((4,), 0.6184519805340201), ((-1, 1, -1, -1, -1),): ((4,), 0.5748454221483426)}
+Q table final accu_reward is 0.240320 and time duration is 0.550464
+Q table final accu_reward is 0.241613 and time duration is 1.099914
+Q table final accu_reward is 0.209933 and time duration is 1.652606
+Q table final accu_reward is 0.201679 and time duration is 2.205587
+Q table final accu_reward is 0.209923 and time duration is 2.758024
+Q table final accu_reward is 0.049677 and time duration is 3.313791
+Q table final accu_reward is 0.209920 and time duration is 3.861995
+Q table final accu_reward is 0.048013 and time duration is 4.416030
+Q table final accu_reward is 0.009920 and time duration is 4.968083
+Q table final accu_reward is 0.201997 and time duration is 5.520273
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.201985 and time duration is 0.382135
+Whittle Index final accu_reward is 0.040000 and time duration is 0.765401
+Whittle Index final accu_reward is 0.208333 and time duration is 1.147837
+Whittle Index final accu_reward is 0.041601 and time duration is 1.529846
+Whittle Index final accu_reward is 0.048003 and time duration is 1.914549
+Whittle Index final accu_reward is 0.201613 and time duration is 2.297299
+Whittle Index final accu_reward is 0.008013 and time duration is 2.680050
+Whittle Index final accu_reward is 0.209603 and time duration is 3.064155
+Whittle Index final accu_reward is 0.208385 and time duration is 3.447692
+Whittle Index final accu_reward is 0.001997 and time duration is 3.828233
+
+count_cvg is 106
+{((-1, -1, 0, -1, -1),): (2,), ((-1, -1, -1, 0, -1),): (3,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (4,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (1,), ((-1, -1, -1, -1, 1),): (0,), ((-1, -1, -1, 1, -1),): (0,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (2,)}
+final policy
+{((-1, -1, 0, -1, -1),): ((2,), 0.6146282096231824), ((-1, -1, -1, 0, -1),): ((3,), 0.6184138685204399), ((-1, 0, -1, -1, -1),): ((1,), 0.6181105547892054), ((1, -1, -1, -1, -1),): ((4,), 0.5757431814182608), ((0, -1, -1, -1, -1),): ((0,), 0.6140034594423261), ((-1, -1, 1, -1, -1),): ((1,), 0.5782266950435475), ((-1, -1, -1, -1, 1),): ((0,), 0.5786782192601571), ((-1, -1, -1, 1, -1),): ((0,), 0.5730621873855037), ((-1, -1, -1, -1, 0),): ((4,), 0.6136177999356637), ((-1, 1, -1, -1, -1),): ((2,), 0.5810406355834086)}
+Q table final accu_reward is 0.201664 and time duration is 0.578784
+Q table final accu_reward is 0.009680 and time duration is 1.151716
+Q table final accu_reward is 0.248333 and time duration is 1.719650
+Q table final accu_reward is 0.040323 and time duration is 2.288491
+Q table final accu_reward is 0.208385 and time duration is 2.865056
+Q table final accu_reward is 0.248013 and time duration is 3.464718
+Q table final accu_reward is 0.249664 and time duration is 4.074437
+Q table final accu_reward is 0.000077 and time duration is 4.678519
+Q table final accu_reward is 0.008003 and time duration is 5.267932
+Q table final accu_reward is 0.001997 and time duration is 5.859376
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.248397 and time duration is 0.408550
+Whittle Index final accu_reward is 0.200003 and time duration is 0.823792
+Whittle Index final accu_reward is 0.240079 and time duration is 1.229167
+Whittle Index final accu_reward is 0.001677 and time duration is 1.633145
+Whittle Index final accu_reward is 0.049933 and time duration is 2.038148
+Whittle Index final accu_reward is 0.201667 and time duration is 2.445108
+Whittle Index final accu_reward is 0.241997 and time duration is 2.853689
+Whittle Index final accu_reward is 0.048077 and time duration is 3.263495
+Whittle Index final accu_reward is 0.000077 and time duration is 3.656980
+Whittle Index final accu_reward is 0.200387 and time duration is 4.066766
+
+count_cvg is 510
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (3,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, -1, 1, -1),): (2,), ((-1, -1, -1, -1, 1),): (1,), ((-1, -1, 1, -1, -1),): (3,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (4,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6202589477309043), ((-1, -1, 0, -1, -1),): ((2,), 0.6133958898841073), ((-1, 0, -1, -1, -1),): ((1,), 0.6168112362141168), ((1, -1, -1, -1, -1),): ((3,), 0.5731166457407422), ((0, -1, -1, -1, -1),): ((0,), 0.618194362501486), ((-1, -1, -1, 1, -1),): ((2,), 0.5761665629154685), ((-1, -1, -1, -1, 1),): ((1,), 0.5716671955638745), ((-1, -1, 1, -1, -1),): ((3,), 0.5755290940681773), ((-1, -1, -1, -1, 0),): ((4,), 0.6145069747119378), ((-1, 1, -1, -1, -1),): ((4,), 0.5749367649305835)}
+Q table final accu_reward is 0.048336 and time duration is 0.618074
+Q table final accu_reward is 0.001679 and time duration is 1.219583
+Q table final accu_reward is 0.048003 and time duration is 1.835472
+Q table final accu_reward is 0.248333 and time duration is 2.444259
+Q table final accu_reward is 0.048387 and time duration is 3.048634
+Q table final accu_reward is 0.008397 and time duration is 3.666927
+Q table final accu_reward is 0.209677 and time duration is 4.267356
+Q table final accu_reward is 0.000333 and time duration is 4.883436
+Q table final accu_reward is 0.248001 and time duration is 5.496627
+Q table final accu_reward is 0.001987 and time duration is 6.106257
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.249664 and time duration is 0.401911
+Whittle Index final accu_reward is 0.201603 and time duration is 0.814514
+Whittle Index final accu_reward is 0.040067 and time duration is 1.225472
+Whittle Index final accu_reward is 0.201997 and time duration is 1.634022
+Whittle Index final accu_reward is 0.209985 and time duration is 2.044840
+Whittle Index final accu_reward is 0.248000 and time duration is 2.451848
+Whittle Index final accu_reward is 0.241600 and time duration is 2.861714
+Whittle Index final accu_reward is 0.201615 and time duration is 3.264789
+Whittle Index final accu_reward is 0.200016 and time duration is 3.675858
+Whittle Index final accu_reward is 0.040333 and time duration is 4.083788
+
+count_cvg is 578
+{((-1, -1, 0, -1, -1),): (2,), ((-1, -1, -1, 0, -1),): (3,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (1,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (1,), ((-1, -1, -1, -1, 1),): (1,), ((-1, -1, -1, 1, -1),): (4,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (2,)}
+final policy
+{((-1, -1, 0, -1, -1),): ((2,), 0.6161031791295799), ((-1, -1, -1, 0, -1),): ((3,), 0.6164370890640123), ((-1, 0, -1, -1, -1),): ((1,), 0.6180564071794867), ((1, -1, -1, -1, -1),): ((1,), 0.5757433522260633), ((0, -1, -1, -1, -1),): ((0,), 0.6212506935598775), ((-1, -1, 1, -1, -1),): ((1,), 0.5729523833836205), ((-1, -1, -1, -1, 1),): ((1,), 0.5800960424370267), ((-1, -1, -1, 1, -1),): ((4,), 0.5763169789616893), ((-1, -1, -1, -1, 0),): ((4,), 0.6111381920397657), ((-1, 1, -1, -1, -1),): ((2,), 0.5722888785825306)}
+Q table final accu_reward is 0.208384 and time duration is 0.580995
+Q table final accu_reward is 0.201665 and time duration is 1.187525
+Q table final accu_reward is 0.200323 and time duration is 1.780463
+Q table final accu_reward is 0.048397 and time duration is 2.365719
+Q table final accu_reward is 0.240067 and time duration is 2.942873
+Q table final accu_reward is 0.200003 and time duration is 3.540394
+Q table final accu_reward is 0.201665 and time duration is 4.140396
+Q table final accu_reward is 0.209600 and time duration is 4.734732
+Q table final accu_reward is 0.040320 and time duration is 5.321825
+Q table final accu_reward is 0.000077 and time duration is 5.908458
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.009923 and time duration is 0.397530
+Whittle Index final accu_reward is 0.208384 and time duration is 0.811643
+Whittle Index final accu_reward is 0.240333 and time duration is 1.219359
+Whittle Index final accu_reward is 0.008320 and time duration is 1.629781
+Whittle Index final accu_reward is 0.240077 and time duration is 2.037493
+Whittle Index final accu_reward is 0.209613 and time duration is 2.443272
+Whittle Index final accu_reward is 0.009933 and time duration is 2.850214
+Whittle Index final accu_reward is 0.041667 and time duration is 3.255146
+Whittle Index final accu_reward is 0.008384 and time duration is 3.666792
+Whittle Index final accu_reward is 0.209933 and time duration is 4.101564
+
+count_cvg is 908
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (2,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (0,), ((-1, -1, -1, -1, 1),): (3,), ((-1, -1, -1, 1, -1),): (1,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (4,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6162531337057807), ((-1, -1, 0, -1, -1),): ((2,), 0.6225500006984495), ((-1, 0, -1, -1, -1),): ((1,), 0.6190646251532177), ((1, -1, -1, -1, -1),): ((2,), 0.5737506780655617), ((0, -1, -1, -1, -1),): ((0,), 0.6144668559412534), ((-1, -1, 1, -1, -1),): ((0,), 0.5812393997468095), ((-1, -1, -1, -1, 1),): ((3,), 0.5768811483342445), ((-1, -1, -1, 1, -1),): ((1,), 0.5772981778254056), ((-1, -1, -1, -1, 0),): ((4,), 0.6212734776971508), ((-1, 1, -1, -1, -1),): ((4,), 0.5752192698302426)}
+Q table final accu_reward is 0.041935 and time duration is 0.570605
+Q table final accu_reward is 0.200387 and time duration is 1.142716
+Q table final accu_reward is 0.201679 and time duration is 1.706430
+Q table final accu_reward is 0.208077 and time duration is 2.278494
+Q table final accu_reward is 0.009664 and time duration is 2.855732
+Q table final accu_reward is 0.241667 and time duration is 3.427610
+Q table final accu_reward is 0.000321 and time duration is 4.012552
+Q table final accu_reward is 0.049665 and time duration is 4.576832
+Q table final accu_reward is 0.209933 and time duration is 5.139282
+Q table final accu_reward is 0.041600 and time duration is 5.693963
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.208397 and time duration is 0.404469
+Whittle Index final accu_reward is 0.048013 and time duration is 0.809523
+Whittle Index final accu_reward is 0.041677 and time duration is 1.204522
+Whittle Index final accu_reward is 0.048077 and time duration is 1.631484
+Whittle Index final accu_reward is 0.009933 and time duration is 2.029108
+Whittle Index final accu_reward is 0.200067 and time duration is 2.420297
+Whittle Index final accu_reward is 0.040013 and time duration is 2.811926
+Whittle Index final accu_reward is 0.248387 and time duration is 3.200486
+Whittle Index final accu_reward is 0.009600 and time duration is 3.589871
+Whittle Index final accu_reward is 0.008065 and time duration is 3.978427
+
+count_cvg is 3
+{((-1, -1, -1, 0, -1),): (3,), ((-1, -1, 0, -1, -1),): (2,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (1,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, -1, 1, -1),): (4,), ((-1, -1, -1, -1, 1),): (0,), ((-1, -1, 1, -1, -1),): (4,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (4,)}
+final policy
+{((-1, -1, -1, 0, -1),): ((3,), 0.6128435764203377), ((-1, -1, 0, -1, -1),): ((2,), 0.6187275842251633), ((-1, 0, -1, -1, -1),): ((1,), 0.6129947475389094), ((1, -1, -1, -1, -1),): ((1,), 0.5715919986055439), ((0, -1, -1, -1, -1),): ((0,), 0.621278127574761), ((-1, -1, -1, 1, -1),): ((4,), 0.5708278824908815), ((-1, -1, -1, -1, 1),): ((0,), 0.5740214475850346), ((-1, -1, 1, -1, -1),): ((4,), 0.5837790548942888), ((-1, -1, -1, -1, 0),): ((4,), 0.6114147004507313), ((-1, 1, -1, -1, -1),): ((4,), 0.5695019054704678)}
+Q table final accu_reward is 0.248016 and time duration is 0.551586
+Q table final accu_reward is 0.200013 and time duration is 1.105499
+Q table final accu_reward is 0.041664 and time duration is 1.656056
+Q table final accu_reward is 0.049677 and time duration is 2.218021
+Q table final accu_reward is 0.248003 and time duration is 2.768049
+Q table final accu_reward is 0.248077 and time duration is 3.324237
+Q table final accu_reward is 0.249985 and time duration is 3.889797
+Q table final accu_reward is 0.041987 and time duration is 4.447998
+Q table final accu_reward is 0.009923 and time duration is 5.021633
+Q table final accu_reward is 0.208000 and time duration is 5.576647
+
+test case 1
+
+P Matrix is: 
+[[(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)], [(0.5007106623822299, 0.49928933761777006), (0.6074103565433411, 0.3925896434566589)]]
+
+Whittle Index final accu_reward is 0.001987 and time duration is 0.395465
+Whittle Index final accu_reward is 0.240080 and time duration is 0.800357
+Whittle Index final accu_reward is 0.049679 and time duration is 1.194894
+Whittle Index final accu_reward is 0.209985 and time duration is 1.595147
+Whittle Index final accu_reward is 0.001665 and time duration is 1.999686
+Whittle Index final accu_reward is 0.241613 and time duration is 2.403055
+Whittle Index final accu_reward is 0.048001 and time duration is 2.806508
+Whittle Index final accu_reward is 0.249615 and time duration is 3.204332
+Whittle Index final accu_reward is 0.249603 and time duration is 3.608907
+Whittle Index final accu_reward is 0.040001 and time duration is 4.011305
+
+count_cvg is 209
+{((-1, -1, 0, -1, -1),): (2,), ((-1, -1, -1, 0, -1),): (3,), ((-1, 0, -1, -1, -1),): (1,), ((1, -1, -1, -1, -1),): (4,), ((0, -1, -1, -1, -1),): (0,), ((-1, -1, 1, -1, -1),): (3,), ((-1, -1, -1, -1, 1),): (0,), ((-1, -1, -1, 1, -1),): (2,), ((-1, -1, -1, -1, 0),): (4,), ((-1, 1, -1, -1, -1),): (0,)}
+final policy
+{((-1, -1, 0, -1, -1),): ((2,), 0.6141099512731598), ((-1, -1, -1, 0, -1),): ((3,), 0.6145078390481081), ((-1, 0, -1, -1, -1),): ((1,), 0.61636409649325), ((1, -1, -1, -1, -1),): ((4,), 0.5788355268045438), ((0, -1, -1, -1, -1),): ((0,), 0.6159137019447813), ((-1, -1, 1, -1, -1),): ((3,), 0.5656985963695208), ((-1, -1, -1, -1, 1),): ((0,), 0.5789779146698172), ((-1, -1, -1, 1, -1),): ((2,), 0.5812381487939028), ((-1, -1, -1, -1, 0),): ((4,), 0.6262761273631783), ((-1, 1, -1, -1, -1),): ((0,), 0.5656537268363108)}
+Q table final accu_reward is 0.209680 and time duration is 0.574105
+Q table final accu_reward is 0.040397 and time duration is 1.166748
+Q table final accu_reward is 0.040323 and time duration is 1.742068
+Q table final accu_reward is 0.200320 and time duration is 2.312444
+Q table final accu_reward is 0.249664 and time duration is 2.886745
+Q table final accu_reward is 0.209600 and time duration is 3.453769
+Q table final accu_reward is 0.249920 and time duration is 4.026360
+Q table final accu_reward is 0.200003 and time duration is 4.605038
+Q table final accu_reward is 0.000064 and time duration is 5.171011
+Q table final accu_reward is 0.200080 and time duration is 5.736095
+
+Whittle Index final accu_reward is 0.123823
+qtable final accu_reward is 0.126637

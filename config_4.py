@@ -24,7 +24,9 @@ def combination(n, k):
 
 N_NODES = 1
 
-N_CHANNELS = 5
+N_CHANNELS = 2
+
+GAMMA = 0.3
 
 # q-learning settings
 AGENT_STATE_WINDOWS_SIZE = 1
@@ -54,6 +56,7 @@ B = [1 for i in range(N_CHANNELS)]
 
 # for writing to the file
 PERIOD = 100  # for writing to the file
-T_THRESHOLD = 300000  # 5000000# num of plays; 80000000
-T_EVAL = 50000
-T_CVG = 15000
+T_THRESHOLD = 500000  # 5000000# num of plays; 80000000
+T_EVAL = 10000
+T_TIMES = 1000
+T_CVG = 1500

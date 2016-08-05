@@ -3,8 +3,8 @@ import random
 from config_4 import *
 from util import Counter
 
-OBSERVE = 20000  # timesteps to observe before training
-EXPLORE = 100000  # frames over which to anneal epsilon #700000
+OBSERVE = 150000  # timesteps to observe before training
+EXPLORE = 120000  # frames over which to anneal epsilon #700000
 FINAL_EPSILON = 0.1  # final value of epsilon: for epsilon annealing
 INITIAL_EPSILON = 1  # starting value of epsilon
 INITIAL_ALPHA = 0.3
@@ -26,7 +26,7 @@ class QAgent:
         self.get_next_state = transition_func
 
         # q-learning parameters
-        self.gamma = 0.8
+        self.gamma = GAMMA
         self.epsilon = INITIAL_EPSILON
 
         self.alpha = INITIAL_ALPHA
@@ -49,10 +49,13 @@ class QAgent:
 
             # print some info
             log = False
-            if count > T_THRESHOLD - 100:
+            if count > T_THRESHOLD - 10:
                 if count % 1 == 0:
+                    print('count')
                     print(count)
+                    print('epsilon')
                     print(self.epsilon)
+                    print('R')
                     print(self.R)
                     log = True
             _, self.action = self._get_max_q_value(self.state, log)
@@ -73,6 +76,7 @@ class QAgent:
 
         # print info
         if log:
+            print('Q')
             print self.Q
 
         for action in self.all_actions:
@@ -94,6 +98,31 @@ class QAgent:
             print action_list
 
         return tmp_max, tmp_action
+
+    #get policy
+    def get_policy(self):
+
+
+        Q_state_list = []
+        for i in self.Q:
+            if i[0] not in Q_state_list:
+                Q_state_list.append(i[0])
+
+        Q_value_dict = {}
+
+        for q_state in Q_state_list:
+
+            temp_max = 0
+            temp_action = self.all_actions[0]
+
+            for action in self.all_actions:
+                if self.Q[(q_state, action)] > temp_max:
+                    temp_max = self.Q[(q_state, action)]
+                    temp_action = action
+
+            Q_value_dict[q_state] = (temp_action, temp_max)
+
+        return Q_value_dict
 
     # check if policy is convergent
     def _check_cvg(self, prev_value_dict, count_cvg):
